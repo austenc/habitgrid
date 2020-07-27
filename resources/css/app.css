@@ -1,0 +1,22 @@
+@import 'tailwindcss/base';
+
+/**
+ * Add any custom base styles you need here
+ */
+
+@import 'tailwindcss/components';
+
+/**
+ * Import your custom CSS files here
+ *
+ * For example:
+ * @import "your-great-component";
+ */
+
+@import 'tailwindcss/utilities';
+
+/**
+ * Here we'll add in our own utilities that don't come with Tailwind CSS
+ */
+
+/* Import your own utility files here */

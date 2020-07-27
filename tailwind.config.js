@@ -1,0 +1,22 @@
+let defaultColors = require('tailwindcss/defaultConfig').theme.colors
+
+module.exports = {
+    purge: [
+        './resources/**/*.php',
+        './resources/**/*.css',
+        './resources/**/*.js',
+    ],
+    theme: {
+        container: {
+            center: true,
+        },
+        extend: {
+            colors: {
+                primary: defaultColors.green,
+            },
+            spacing: {
+                '1.5': '0.325rem',
+            },
+        },
+    },
+}
