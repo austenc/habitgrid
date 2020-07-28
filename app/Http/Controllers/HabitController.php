@@ -39,9 +39,9 @@ class HabitController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Habit $habit)
     {
-        //
+        return view('habits.edit')->with(['habit' => $habit]);
     }
 
     public function update(Request $request, $id)

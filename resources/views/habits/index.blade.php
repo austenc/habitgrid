@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         
-                        <a href="#details" class="block mr-4 uppercase text-base font-medium text-primary-500 hover:text-primary-700">Details</a>
+                        <a href="{{ route('habits.edit', $habit) }}" class="block mr-4 uppercase text-base font-medium text-primary-500 hover:text-primary-700">Details</a>
                     </div>
                 </div>
             @endforeach
