@@ -1,6 +1,7 @@
 let defaultColors = require('tailwindcss/defaultConfig').theme.colors
 
 module.exports = {
+    plugins: [require('@tailwindcss/custom-forms')],
     purge: [
         './resources/**/*.php',
         './resources/**/*.css',
@@ -12,7 +13,7 @@ module.exports = {
         },
         extend: {
             colors: {
-                primary: defaultColors.green,
+                primary: defaultColors.purple,
             },
             spacing: {
                 '1.5': '0.325rem',

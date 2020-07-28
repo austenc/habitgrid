@@ -9,3 +9,5 @@ Route::get('/', function () {
         'days' => CarbonPeriod::create(today()->subYear()->addDay(), today()),
     ]);
 });
+
+Route::resource('habits', 'HabitController');

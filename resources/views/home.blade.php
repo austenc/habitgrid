@@ -14,6 +14,9 @@
         </div>
     </div> --}}
 
+    <div class="p-8">
+        <a href="{{ route('habits.index') }}" class="text-primary-500 hover:text-primary-700">Manage Habits</a>
+    </div>
 
     <div class="flex space-x-2 pb-20 mt-20 px-10">
         <div class="space-y-1.5">
@@ -40,7 +43,7 @@
                 @foreach (array_chunk($days->toArray(), 7) as $week)
                     <div class="space-y-1.5">
                         @foreach ($week as $day)
-                            <div class="bg-gray-400 w-4 h-4 rounded">
+                            <div class="bg-gray-400 hover:bg-primary-300 w-4 h-4 rounded">
                                 <span class="sr-only">{{ $day->format('Y-m-d') }}</span>
                             </div>
                         @endforeach
