@@ -10,6 +10,8 @@ This is a work in progress, we are building it on stream:
 
 ## To Do
 
-- [ ] Build habit create/edit forms
+- [x] Build habit create form
+- [ ] Build tooltip when hovering over a given day on the grid
 - [ ] Fix bug in grid display to sort by start of week (`startOfWeek()` in carbon?)
-- [ ] Add a way to tally a habit for a certain day
+- [ ] Add a way to track a habit for a certain day
+- [ ] Habit edit form

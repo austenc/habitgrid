@@ -18,4 +18,9 @@
 
     {{-- Day Grid --}}
     <x-day-grid />
+
+    {{-- Tooltip Component --}}
+    <x-tooltip title="Hi Chat! This is an example tooltip">
+        Example
+    </x-tooltip>
 @endsection
