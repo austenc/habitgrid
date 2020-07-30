@@ -17,10 +17,11 @@
     <a href="{{ route('habits.index') }}" class="text-primary-500 hover:text-primary-700">Manage Habits</a>
 
     {{-- Day Grid --}}
-    <x-day-grid />
+    <div class="my-5 px-8 text-5xl font-extrabold">
+        Thanks Chat!
+    </div>
 
-    {{-- Tooltip Component --}}
-    <x-tooltip title="Hi Chat! This is an example tooltip">
-        Example
-    </x-tooltip>
+    <h1 class="text-gray-700 text-4xl font-bold">Dashboard</h1>
+
+    <x-day-grid />
 @endsection

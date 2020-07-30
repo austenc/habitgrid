@@ -1,10 +1,12 @@
-<span x-data="{ open: false }">
+@props(['title'])
+
+<span x-data="{ open: false }" {{ $attributes->merge(['class' => 'cursor-pointer']) }}>
     <span class="inline-block w-full relative">
-        <span x-show="open" class="absolute top-0 -mt-5 transform inline-block bg-gray-900 text-gray-100 py-px px-2 text-sm rounded">
+        <span x-cloak x-show="open" class="absolute top-0 transform -translate-y-full -mt-1 inline-block bg-gray-900 text-gray-100 py-px px-2 text-xs rounded">
             {{ $title }}
         </span>
-    </span>
-    <span @mouseover="open = true" @mouseout="open = false">
-        {{ $slot }}
+        <span @mouseover="open = true" @mouseout="open = false">
+            {{ $slot }}
+        </span>
     </span>
 </span>
