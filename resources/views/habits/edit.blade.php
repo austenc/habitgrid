@@ -10,9 +10,9 @@
             <a href="{{ route('habits.index') }}" class="text-primary-500 hover:text-primary-700">Back to all habits</a>
         </div>
 
-        <div class="p-5 mx-auto rounded shadow bg-white">
+        <x-card>
            <x-day-grid /> 
-        </div>
+        </x-card>
 
         <div class="my-10">
             <h2 class="text-gray-400 font-semibold text-xl text-center">Recent Entries</h2>

@@ -11,7 +11,7 @@ class HabitTest extends TestCase
 
     public function test_see_create_form()
     {
-        $response = $this->get('/');
+        $response = $this->get(route('habits.index'));
         $response->assertSuccessful();
         $response->assertSee('Habit Name');
         $response->assertSee('action="'.route('habits.store').'"', false);

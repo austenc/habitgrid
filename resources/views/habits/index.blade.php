@@ -13,7 +13,7 @@
         <div class="space-y-2 mt-8">
             <h2 class="text-gray-400 font-semibold text-xl text-center">Currently Tracking</h2>
             @foreach ($habits as $habit)
-                <div class="p-5 mx-auto rounded shadow bg-white">
+                <x-card>
                     <div class="flex justify-between items-center">
                         <div class="text-lg font-medium">
                             {{ $habit->name }}
@@ -31,7 +31,7 @@
                         </div>
                         
                         <a href="{{ route('habits.edit', $habit) }}" class="block mr-4 uppercase text-base font-medium text-primary-500 hover:text-primary-700">Details</a>
-                    </div>
+                    </x-card>
                 </div>
             @endforeach
         </div>

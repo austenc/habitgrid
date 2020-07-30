@@ -1,6 +1,6 @@
 <form action="{{ route('habits.store') }}" method="POST">
     @csrf
-    <div class="p-5 mx-auto rounded shadow-md bg-white">
+    <x-card>
         <label class="block text-sm font-medium">
             Habit Name
             <input type="text" name="name" placeholder="Habit name" class="form-input block w-full">
@@ -18,5 +18,5 @@
         <div class="mt-3 text-right">
             <button type="submit" class="px-3 py-2 text-white rounded bg-primary-700 hover:bg-primary-500">Create Habit</button>
         </div>
-    </div>
+    </x-card>
 </form>

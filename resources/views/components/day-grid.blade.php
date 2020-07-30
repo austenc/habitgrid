@@ -1,4 +1,4 @@
-<div class="flex space-x-2 pb-20 mt-20">
+<div class="flex space-x-2">
     <div class="space-y-1.5">
         <div class="leading-4">&nbsp;</div>
         @foreach (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $dayName)
