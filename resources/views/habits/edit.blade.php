@@ -11,7 +11,7 @@
         </div>
 
         <x-card>
-           <x-day-grid /> 
+           <livewire:day-grid /> 
         </x-card>
 
         <div class="my-10">

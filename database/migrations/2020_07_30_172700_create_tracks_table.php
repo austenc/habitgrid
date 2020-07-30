@@ -18,7 +18,7 @@ class CreateTracksTable extends Migration
             $table->bigInteger('habit_id');
             $table->integer('quantity');
             $table->dateTime('tracked_on');
-            $table->text('notes');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

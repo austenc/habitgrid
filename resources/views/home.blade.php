@@ -23,7 +23,7 @@
 
     <h1 class="text-gray-700 text-4xl font-bold">Dashboard</h1>
 
-    <x-card>
-        <x-day-grid />
-    </x-card>
+    {{-- <x-card> --}}
+        <livewire:day-grid />
+    {{-- </x-card> --}}
 @endsection
