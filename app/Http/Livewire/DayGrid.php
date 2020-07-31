@@ -10,11 +10,6 @@ use Livewire\Component;
 
 class DayGrid extends Component
 {
-    // TO DO
-    // - Show grid filled in for days with a habit tracked
-    // - Navigate between days easily (prev/next buttons)
-    // - Default to today
-
     public $selected = '2019-07-28 00:00:00';
 
     public function toggleDay($date)
