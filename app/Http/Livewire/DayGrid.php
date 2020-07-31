@@ -70,37 +70,54 @@ class DayGrid extends Component
             $classes[] = 'hover:bg-gray-500';
         }
 
-        $classes[] = $this->colorFor($this->totalsByDay->get($day->format('Y-m-d')));
+        $classes[] = $this->colorByNumber($this->totalsByDay->get($day->format('Y-m-d')));
 
         return implode(' ', $classes);
     }
 
-    public function colorFor($quantity)
+    public function colorByNumber($number)
     {
-        if ($quantity >= 4) {
+        if ($number >= 4) {
             return 'bg-primary-700';
         }
 
-        if ($quantity >= 3) {
+        if ($number >= 3) {
             return 'bg-primary-600';
         }
 
-        if ($quantity >= 2) {
+        if ($number >= 2) {
             return 'bg-primary-500';
         }
 
-        if ($quantity >= 1) {
+        if ($number >= 1) {
             return 'bg-primary-400';
         }
 
         return 'bg-gray-400';
     }
 
+    protected function daysFromPastYear($interval = null)
+    {
+        return CarbonPeriod::create(
+            today()->subYear()->startOfWeek(Carbon::SUNDAY),
+            $interval,
+            today()
+        );
+    }
+
+    protected function daysByMonth()
+    {
+        return collect($this->daysFromPastYear())->groupBy(function ($date) {
+            return $date->format('Y-m');
+        });
+    }
+
     public function render()
     {
         return view('livewire.day-grid')->with([
-            'weeks' => CarbonPeriod::create(today()->subYear()->startOfWeek(Carbon::SUNDAY), '1 week', today()),
-            'days' => CarbonPeriod::create(today()->subYear()->startOfWeek(Carbon::SUNDAY), today()),
+            'weeks' => $this->daysFromPastYear('1 week'),
+            'days' => $this->daysFromPastYear(),
+            'daysByMonth' => $this->daysByMonth(),
         ]);
     }
 }

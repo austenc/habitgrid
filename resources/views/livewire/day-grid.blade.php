@@ -1,6 +1,8 @@
 <div>
     <x-card>
-        <div class="flex space-x-2">
+
+        {{-- Horizontal --}}
+        <div class="hidden xl:flex space-x-2 justify-center">
             <div class="space-y-1.5">
                 <div class="leading-4">&nbsp;</div>
                 @foreach (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $dayName)
@@ -11,7 +13,7 @@
             </div>
         
             <div class="">
-                <div class="w-full flex space-x-1.5 text-xs text-gray-500">
+                <div class="w-full flex space-x-1 text-xs text-gray-500">
                     @foreach ($weeks as $week)
                         <div class="w-4 h-4">
                             @if ($week->format('d') <= 7)
@@ -21,7 +23,7 @@
                     @endforeach
                 </div>
         
-                <div class="flex space-x-1.5 leading-4 mt-1">
+                <div class="flex space-x-1 leading-4 mt-1">
                     @foreach (array_chunk($days->toArray(), 7) as $week)
                         <div class="space-y-1.5">
                             @foreach ($week as $day)
@@ -39,6 +41,43 @@
                     @endforeach
                 </div>
             </div>
+        </div>
+
+        {{-- Vertical --}}
+        <div class="xl:hidden">
+            @foreach ($daysByMonth as $days)
+                <div class="flex space-x-2 mt-1">
+                    <div class="w-8 text-xs leading-4 text-gray-500">
+                        {{ $days->first()->format('M') }}
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap leading-4">
+                            @foreach ($days as $day)
+                                <span wire:click="toggleDay('{{ $day }}')" 
+                                    class="{{ $this->classForDay($day) }} block mr-1 mb-1 w-4 h-4 rounded border-2 border-transparent"
+                                >
+                                    <x-tooltip :title="$day->format('M d, Y')">
+                                        <span class="inline-block w-full h-full">
+                                            <span class="sr-only">{{ $day->format('Y-m-d') }}</span>
+                                        </span>
+                                    </x-tooltip>
+                                </span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Legend --}}
+        <div class="flex items-center justify-center xl:justify-end xl:mr-2 space-x-1 mt-4">
+            <div class="px-px text-gray-500 text-xs">Less</div>
+            @foreach (range(0, 4) as $number)
+                <div class="{{ $this->colorByNumber($number) }} block w-4 h-4 rounded border-2 border-transparent">
+                    &nbsp;
+                </div>
+            @endforeach
+            <div class="px-px text-gray-500 text-xs">More</div>
         </div>
     </x-card>
     <div class="mt-3">

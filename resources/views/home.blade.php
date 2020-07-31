@@ -17,8 +17,8 @@
     <a href="{{ route('habits.index') }}" class="text-primary-500 hover:text-primary-700">Manage Habits</a>
 
     {{-- Day Grid --}}
-    <div class="my-5 px-8 text-5xl font-extrabold">
-        Thanks Chat!
+    <div class="my-5 text-5xl font-extrabold">
+        Say Hi in Chat!
     </div>
 
     <h1 class="text-gray-700 text-4xl font-bold">Dashboard</h1>
