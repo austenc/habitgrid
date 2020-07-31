@@ -10,16 +10,7 @@ use Livewire\Component;
 
 class DayGrid extends Component
 {
-    public $selected = '2019-07-28 00:00:00';
-
-    public function toggleDay($date)
-    {
-        if ($this->selected == $date) {
-            $this->selected = null;
-        } else {
-            $this->selected = $date;
-        }
-    }
+    public $selected = null;
 
     public function getHabitsProperty()
     {
@@ -40,6 +31,20 @@ class DayGrid extends Component
             ->pluck('total_completed', 'day');
     }
 
+    public function getCarbonDayProperty()
+    {
+        return new Carbon($this->selected);
+    }
+
+    public function toggleDay($date)
+    {
+        if ($this->selected == $date) {
+            $this->selected = null;
+        } else {
+            $this->selected = $date;
+        }
+    }
+
     public function addTrack($habitId)
     {
         Track::create([
@@ -53,6 +58,20 @@ class DayGrid extends Component
     {
         Track::where('habit_id', $habitId)
             ->whereDate('tracked_on', $this->selected)->delete();
+    }
+
+    public function previous()
+    {
+        if ($this->carbonDay->greaterThan($this->daysFromPastYear()->first())) {
+            $this->selected = $this->carbonDay->subDay()->toDateTimeString();
+        }
+    }
+
+    public function next()
+    {
+        if ($this->carbonDay->lessThan(today())) {
+            $this->selected = $this->carbonDay->addDay()->toDateTimeString();
+        }
     }
 
     public function classForDay($day)

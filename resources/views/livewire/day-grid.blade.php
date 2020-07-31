@@ -43,20 +43,20 @@
             </div>
         </div>
 
-        {{-- Vertical --}}
+        {{-- Mobile size, by month --}}
         <div class="xl:hidden">
-            @foreach ($daysByMonth as $days)
+            @foreach ($daysByMonth as $daysInMonth)
                 <div class="flex space-x-2 mt-1">
                     <div class="w-8 text-xs leading-4 text-gray-500">
-                        {{ $days->first()->format('M') }}
+                        {{ $daysInMonth->first()->format('M') }}
                     </div>
                     <div class="flex-1">
                         <div class="flex flex-wrap leading-4">
-                            @foreach ($days as $day)
+                            @foreach ($daysInMonth as $day)
                                 <span wire:click="toggleDay('{{ $day }}')" 
                                     class="{{ $this->classForDay($day) }} block mr-1 mb-1 w-4 h-4 rounded border-2 border-transparent"
                                 >
-                                    <x-tooltip :title="$day->format('M d, Y')">
+                                    <x-tooltip :title="$day->format('D M d, Y')">
                                         <span class="inline-block w-full h-full">
                                             <span class="sr-only">{{ $day->format('Y-m-d') }}</span>
                                         </span>
@@ -80,11 +80,25 @@
             <div class="px-px text-gray-500 text-xs">More</div>
         </div>
     </x-card>
-    <div class="mt-3">
-        Current Day: <span class="italic">{{ $selected ?? 'None' }}</span>
-    </div>
+    @if ($selected)
+        <div class="mt-6 flex justify-between">
+            <div>
+                @if ($this->carbonDay->greaterThan($days->first()))
+                    <button wire:click="previous" class="text-link py-1 px-3">&laquo; Previous</button>
+                @endif
+            </div>
+            <div class="text-center text-xl font-medium">
+                {{ $this->carbonDay->format('l F jS, Y') }}
+            </div>
+            <div>
+                @if ($this->carbonDay->lessThan(today()))
+                    <button wire:click="next" class="text-link py-1 px-3">Next &raquo;</button>
+                @endif
+            </div>
+        </div>
+    @endif
     @foreach ($this->habits as $habit)
-        <x-card class="mt-3">
+        <x-card class="mt-2">
             <div class="flex justify-between items-center">
                 Habit: {{ $habit->name }}
                 <div class="text-right space-x-2">

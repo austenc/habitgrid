@@ -1,3 +1,11 @@
 [x-cloak] {
     @apply hidden;
 }
+
+.text-link {
+    @apply text-primary-500;
+}
+
+.text-link:hover {
+    @apply text-primary-700;
+}

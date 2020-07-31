@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Habit;
 use App\Http\Livewire\DayGrid;
 use App\Track;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire;
 use Tests\TestCase;
@@ -32,8 +33,8 @@ class DayGridTest extends TestCase
     public function test_can_select_new_day()
     {
         $this->component->assertSet('selected', $this->component->selected)
-            ->call('toggleDay', today()->subDay()->serialize())
-            ->assertSet('selected', today()->subDay()->serialize());
+            ->call('toggleDay', today()->subDay()->toDateTimeString())
+            ->assertSet('selected', today()->subDay()->toDateTimeString());
     }
 
     public function test_can_unselect_current_day()
@@ -86,5 +87,35 @@ class DayGridTest extends TestCase
             'id' => $trackOnOtherDay->id,
             'habit_id' => $this->habit->id,
         ]);
+    }
+
+    public function test_navigate_to_next_day()
+    {
+        $currentDay = $this->component->selected;
+        $nextDay = (new Carbon($currentDay))->addDay();
+        $this->component->call('next')
+            ->assertSet('selected', $nextDay->toDateTimeString());
+    }
+
+    public function test_navigate_to_previous_day()
+    {
+        $this->component->set('selected', today()->toDateTimeString())
+            ->call('previous')
+            ->assertSet('selected', today()->subDay()->toDateTimeString());
+    }
+
+    public function test_cant_navigate_before_first_day()
+    {
+        $firstDay = $this->component->viewData('days')->first();
+        $this->component->set('selected', $firstDay->toDateTimeString())
+            ->call('previous')
+            ->assertSet('selected', $firstDay->toDateTimeString());
+    }
+
+    public function test_cant_navigate_past_today()
+    {
+        $this->component->set('selected', today()->toDateTimeString())
+            ->call('next')
+            ->assertSet('selected', today()->toDateTimeString());
     }
 }
