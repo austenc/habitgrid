@@ -1,18 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('message'))
+        <div class="mt-6 border border-teal-200 rounded p-6 bg-teal-100 text-teal-700">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="mx-auto mt-12">
-        <div class="flex items-baseline justify-between">
-            <div class="flex space-x-3 items-center">
-                <h1 class="text-3xl font-semibold">{{ $habit->name }}</h1>
-                <div class="inline-flex items-center py-px px-3 bg-orange-200 text-orange-700 rounded-full">113 day streak!</div>
+        <div x-data="{ editing: false }">
+            <div class="flex items-baseline justify-between">
+                <div class="flex space-x-3 items-center">
+                    <h1 class="text-3xl font-semibold">{{ $habit->name }}</h1>
+                    <div class="inline-flex items-center py-px px-3 bg-orange-200 text-orange-700 rounded-full">113 day streak!</div>
+                    <button @click.prevent="editing = !editing" type="button" x-text="editing ? 'Cancel' : 'Edit'" class="text-sm p-1 uppercase font-semibold tracking-wide text-link">Edit</button>
+                </div>
+                <a href="{{ route('habits.index') }}" class="text-link">Back to all habits</a>
             </div>
-            <a href="{{ route('habits.index') }}" class="text-primary-500 hover:text-primary-700">Back to all habits</a>
+            <div x-show="editing" x-cloak
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform scale-100"
+            >
+                <x-habit-form :habit="$habit" :action="route('habits.update', $habit)" method="PUT" />
+            </div>
         </div>
 
-        <x-card>
-           <livewire:day-grid /> 
-        </x-card>
+        <div class="mt-6">
+        	<livewire:day-grid /> 
+        </div>
 
         <div class="my-10">
             <h2 class="text-gray-400 font-semibold text-xl text-center">Recent Entries</h2>

@@ -7,8 +7,7 @@
             <a href="/" class="text-primary-500 hover:text-primary-700">Back to dashboard</a>
         </div>
 
-
-        @include('habits.create')
+        <x-habit-form />
 
         <div class="space-y-2 mt-8">
             <h2 class="text-gray-400 font-semibold text-xl text-center">Currently Tracking</h2>

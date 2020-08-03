@@ -44,9 +44,21 @@ class HabitController extends Controller
         return view('habits.edit')->with(['habit' => $habit]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Habit $habit)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $habit->update($request->only([
+            'name',
+            'goal',
+            'unit',
+        ]));
+
+        session()->flash('message', 'Habit updated successfully.');
+
+        return redirect()->route('habits.edit', $habit);
     }
 
     public function destroy($id)

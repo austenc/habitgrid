@@ -22,6 +22,7 @@ class DayGridTest extends TestCase
         parent::setUp();
 
         $this->component = Livewire::test(DayGrid::class);
+        $this->component->set('selected', today()->toDateTimeString());
         $this->habit = factory(Habit::class)->create();
     }
 
@@ -91,10 +92,9 @@ class DayGridTest extends TestCase
 
     public function test_navigate_to_next_day()
     {
-        $currentDay = $this->component->selected;
-        $nextDay = (new Carbon($currentDay))->addDay();
+        $this->component->set('selected', today()->subDay()->toDateTimeString());
         $this->component->call('next')
-            ->assertSet('selected', $nextDay->toDateTimeString());
+            ->assertSet('selected', today()->toDateTimeString());
     }
 
     public function test_navigate_to_previous_day()

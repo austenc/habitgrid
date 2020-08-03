@@ -20,9 +20,14 @@ This is a work in progress, we are building it on stream:
 -   [x] Fix responsiveness of day grid
 -   [x] Write some tests for day grid component
 -   [x] Navigate between days easily (prev/next buttons)
-
-## Next Time
-
--   [ ] Habit edit form
+-   [x] Habit edit form
 -   [ ] Optionally scope day grid to a single habit for details page
 -   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
+
+## Next Time
+-   [ ] Suggestions from chat
+
+
+## Future streams
+-   [ ] Building a form component system
+-   [ ] Flash messages / notifications components with Alpine JS
