@@ -8,13 +8,15 @@
     @endif
     <div class="mx-auto mt-12">
         <div x-data="{ editing: false }">
-            <div class="flex items-baseline justify-between">
-                <div class="flex space-x-3 items-center">
-                    <h1 class="text-3xl font-semibold">{{ $habit->name }}</h1>
-                    <div class="inline-flex items-center py-px px-3 bg-orange-200 text-orange-700 rounded-full">113 day streak!</div>
-                    <button @click.prevent="editing = !editing" type="button" x-text="editing ? 'Cancel' : 'Edit'" class="text-sm p-1 uppercase font-semibold tracking-wide text-link">Edit</button>
+            <div class="md:flex md:space-x-3 items-center">
+                <h1 class="text-3xl font-semibold">{{ $habit->name }}</h1>
+                <x-streak-badge :habit="$habit" />
+                <div class="flex-grow">
+                    <div class="mt-4 md:mt-0 flex items-center flex-row-reverse md:flex-row justify-between md:flex-1">
+                        <button @click.prevent="editing = !editing" type="button" x-text="editing ? 'Cancel' : 'Edit'" class="block text-sm p-1 uppercase font-semibold tracking-wide text-link">Edit</button>
+                        <a href="{{ route('habits.index') }}" class="text-link">Back to all habits</a>
+                    </div>
                 </div>
-                <a href="{{ route('habits.index') }}" class="text-link">Back to all habits</a>
             </div>
             <div x-show="editing" x-cloak
                 x-transition:enter="transition ease-out duration-300"
@@ -28,7 +30,7 @@
         </div>
 
         <div class="mt-6">
-        	<livewire:day-grid /> 
+        	<livewire:day-grid :habit="$habit" /> 
         </div>
 
         <div class="my-10">

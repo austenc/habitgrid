@@ -15,7 +15,12 @@
                 <x-card>
                     <div class="flex justify-between items-center">
                         <div class="text-lg font-medium">
-                            {{ $habit->name }}
+                            <div class="flex items-center space-x-3">
+                                <div>
+                                    {{ $habit->name }}
+                                </div>
+                                <x-streak-badge :habit="$habit" />
+                            </div>
     
                             <div class="flex mt-2 space-x-12 text-gray-500">
                                 <div class="">

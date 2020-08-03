@@ -9,7 +9,7 @@ class HabitController extends Controller
 {
     public function index()
     {
-        return view('habits.index')->with([
+        return view('habits.index', [
             'habits' => Habit::all(),
         ]);
     }
@@ -41,7 +41,9 @@ class HabitController extends Controller
 
     public function edit(Habit $habit)
     {
-        return view('habits.edit')->with(['habit' => $habit]);
+        return view('habits.edit', [
+            'habit' => $habit,
+        ]);
     }
 
     public function update(Request $request, Habit $habit)

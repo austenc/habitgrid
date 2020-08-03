@@ -58,6 +58,8 @@ class DayGridTest extends TestCase
             'habit_id' => $this->habit->id,
             'tracked_on' => $this->component->selected,
         ]);
+
+        $this->assertDatabaseCount('tracks', 1);
     }
 
     public function test_can_remove_track_for_habit()
@@ -88,6 +90,7 @@ class DayGridTest extends TestCase
             'id' => $trackOnOtherDay->id,
             'habit_id' => $this->habit->id,
         ]);
+        $this->assertDatabaseCount('tracks', 1);
     }
 
     public function test_navigate_to_next_day()
@@ -118,4 +121,6 @@ class DayGridTest extends TestCase
             ->call('next')
             ->assertSet('selected', today()->toDateTimeString());
     }
+
+    // TODO: write tests to check scoping of habits and tracks
 }

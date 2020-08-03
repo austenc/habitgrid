@@ -21,10 +21,14 @@ This is a work in progress, we are building it on stream:
 -   [x] Write some tests for day grid component
 -   [x] Navigate between days easily (prev/next buttons)
 -   [x] Habit edit form
--   [ ] Optionally scope day grid to a single habit for details page
--   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
+-   [x] Optionally scope day grid to a single habit for details page
+-   [x] Make "stream" badge dynamic (or try)
+-   [x] Improve current streak relation so we don't need first()
+-   [x] Fix current streak query (date calculation is off)
 
 ## Next Time
+-   [ ] Adjust streak query to only look for days prior to today
+-   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
 -   [ ] Suggestions from chat
 
 
