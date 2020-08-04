@@ -13,9 +13,16 @@ class DayGrid extends Component
     public $habitId;
     public $selected = null;
 
+    protected $listeners = ['dayUnselected'];
+
     public function mount($habit = null)
     {
         $this->habitId = $habit->id ?? null;
+    }
+
+    public function dayUnselected()
+    {
+        $this->selected = null;
     }
 
     public function getHabitsProperty()

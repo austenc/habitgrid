@@ -51,10 +51,11 @@
                         {{ $daysInMonth->first()->format('M') }}
                     </div>
                     <div class="flex-1">
-                        <div class="flex flex-wrap leading-4">
+                        <div class="flex flex-wrap leading-4" x-data>
                             @foreach ($daysInMonth as $day)
                                 <span wire:click="toggleDay('{{ $day }}')" 
-                                    class="{{ $this->classForDay($day) }} block mr-1 mb-1 w-4 h-4 rounded border-2 border-transparent"
+                                    @click.prevent="document.body.classList.toggle('fixed'); document.body.classList.toggle('xl:static')"
+                                    class="{{ $this->classForDay($day) }} block mr-2 mb-2 w-6 h-6 rounded border-2 border-transparent"
                                 >
                                     <x-tooltip :title="$day->format('D M d, Y')">
                                         <span class="inline-block w-full h-full">
@@ -81,38 +82,20 @@
         </div>
     </x-card>
     @if ($selected)
-        <div class="mt-6 flex justify-between">
-            <div>
-                @if ($this->carbonDay->greaterThan($days->first()))
-                    <button wire:click="previous" class="text-link py-1 px-3">&laquo; Previous</button>
-                @endif
-            </div>
-            <div class="text-center text-xl font-medium">
-                {{ $this->carbonDay->format('l F jS, Y') }}
-            </div>
-            <div>
-                @if ($this->carbonDay->lessThan(today()))
-                    <button wire:click="next" class="text-link py-1 px-3">Next &raquo;</button>
-                @endif
+
+        {{-- Desktop version --}}
+        <div class="hidden xl:block">
+            @include('tracks.edit')
+        </div>
+
+        {{-- Mobile version --}}
+        <div class="xl:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 p-8" x-data>
+            <div class="relative mt-20"
+                @click.away="window.livewire.emit('dayUnselected')" 
+                @keydown.escape.window="window.livewire.emit('dayUnselected')" 
+            >
+                @include('tracks.edit')
             </div>
         </div>
     @endif
-    @foreach ($this->habits as $habit)
-        <x-card class="mt-2">
-            <div class="flex justify-between items-center">
-                Habit: {{ $habit->name }}
-                <div class="text-right space-x-2">
-                    @if ($habit->tracks->isEmpty())
-                        <button wire:click="addTrack({{ $habit->id }})" type="button" class="px-4 py-2 rounded text-white bg-gray-500 hover:bg-gray-700 transition-all duration-300">
-                            Incomplete
-                        </button>
-                    @else 
-                        <button wire:click="removeTrack({{ $habit->id }})" type="button" class="px-4 py-2 rounded text-white bg-primary-500 hover:bg-primary-700 transition-all duration-300">
-                            Completed
-                        </button>
-                    @endif
-                </div>
-            </div>
-        </x-card>
-    @endforeach
 </div>

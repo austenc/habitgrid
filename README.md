@@ -30,13 +30,23 @@ This is a work in progress, we are building it on stream:
 
 -   [x] Adjust streak query to only look for days prior to today
 -   [x] Add streak to livewire component? Nested components? 🤔
--   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
+-   [x] At mobile size, put toggle buttons in a popup, also make dots bigger?
+-   [ ] Make stat tiles dynamic / decide what to do with them
 
-## Next Time
+## Planned features
 
--   [ ] Suggestions from chat!
+-   [ ] Build navbar
+-   [ ] Combine dashboard and habits index
+    -   [ ] Make create form toggleable
+-   [ ] Integrate user scoping and authentication
+-   [ ] Add support for tracking specific units when completing
+-   [ ] Add notes a given track
+-   [ ] Add loading states to buttons?
 
-## Future streams
+## Future stream ideas (what are yours?)
 
+-   [ ] Habit leaderboards
+-   [ ] Public habit pages / toggle visibility
+-   [ ] Challenge friends to a habit battle
 -   [ ] Building a form component system
 -   [ ] Flash messages / notifications components with Alpine JS
