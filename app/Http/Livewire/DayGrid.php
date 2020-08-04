@@ -13,11 +13,16 @@ class DayGrid extends Component
     public $habitId;
     public $selected = null;
 
-    protected $listeners = ['dayUnselected'];
+    protected $listeners = ['daySelected', 'dayUnselected'];
 
     public function mount($habit = null)
     {
         $this->habitId = $habit->id ?? null;
+    }
+
+    public function daySelected($day)
+    {
+        $this->selected = $day;
     }
 
     public function dayUnselected()
@@ -61,6 +66,7 @@ class DayGrid extends Component
             $this->selected = null;
         } else {
             $this->selected = $date;
+            $this->emit('dayChanged', $date);
         }
     }
 
