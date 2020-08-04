@@ -64,12 +64,16 @@ class DayGrid extends Component
             'quantity' => 1,
             'tracked_on' => $this->selected,
         ]);
+
+        $this->emit('habitTracked', $habitId);
     }
 
     public function removeTrack($habitId)
     {
         Track::where('habit_id', $habitId)
             ->whereDate('tracked_on', $this->selected)->delete();
+
+        $this->emit('habitTracked', $habitId);
     }
 
     public function previous()

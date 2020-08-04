@@ -29,7 +29,7 @@ This is a work in progress, we are building it on stream:
 ## Today
 
 -   [x] Adjust streak query to only look for days prior to today
--   [ ] Add streak to livewire component? Nested components? 🤔
+-   [x] Add streak to livewire component? Nested components? 🤔
 -   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
 
 ## Next Time
