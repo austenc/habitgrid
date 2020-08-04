@@ -8,7 +8,7 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## To Do
+## Done
 
 -   [x] Build habit create form
 -   [x] Build tooltip when hovering over a given day on the grid
@@ -23,15 +23,20 @@ This is a work in progress, we are building it on stream:
 -   [x] Habit edit form
 -   [x] Optionally scope day grid to a single habit for details page
 -   [x] Make "stream" badge dynamic (or try)
--   [x] Improve current streak relation so we don't need first()
+-   [x] Improve current streak relation so we don't need first
 -   [x] Fix current streak query (date calculation is off)
 
-## Next Time
--   [ ] Adjust streak query to only look for days prior to today
--   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
--   [ ] Suggestions from chat
+## Today
 
+-   [x] Adjust streak query to only look for days prior to today
+-   [ ] Add streak to livewire component? Nested components? 🤔
+-   [ ] At mobile size, put toggle buttons in a popup, also make dots bigger?
+
+## Next Time
+
+-   [ ] Suggestions from chat!
 
 ## Future streams
+
 -   [ ] Building a form component system
 -   [ ] Flash messages / notifications components with Alpine JS

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +28,7 @@ class Habit extends Model
                 $join->on('streaks.id', '=', 'tracks.id')->where('habit_id', $this->getKey());
             })
             ->groupByRaw('streaks.startDate')
-            ->havingRaw('last_tracked_on=CURDATE()')
+            ->havingRaw('(last_tracked_on >= DATE_SUB(CURDATE(), INTERVAL 1 DAY))')
             ->withDefault();
     }
 }
