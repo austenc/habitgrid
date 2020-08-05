@@ -80,6 +80,12 @@
             @endforeach
             <div class="px-px text-gray-500 text-xs">More</div>
         </div>
+
+        @if ($habit ?? false)
+            <div class="mt-8">
+                <livewire:week-view :habit="$habit" :current-day="$selected" /> 
+            </div>
+        @endif
     </x-card>
     @if ($selected)
 

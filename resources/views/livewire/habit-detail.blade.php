@@ -29,6 +29,4 @@
    <div class="my-10">
        <h2 class="text-gray-400 font-semibold text-xl text-center">Recent Entries</h2>
    </div>
-   
-   <livewire:week-view :habit="$habit" />
 </div>

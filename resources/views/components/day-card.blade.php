@@ -1,6 +1,6 @@
 @props(['unit', 'total', 'date', 'selected'])
 
-<div {{ $attributes }} class="{{ $selected ? 'border-primary-500' : 'border-transparent' }} cursor-pointer flex-1 flex flex-col rounded shadow bg-white border-b-4 hover:border-gray-300 transform hover:-translate-y-2 transition duration-300">
+<div {{ $attributes }} class="{{ $selected ? 'border-primary-500 hover:border-primary-600' : 'border-transparent' }} cursor-pointer flex-1 flex flex-col rounded shadow bg-gray-100 border-b-4 hover:border-gray-300 transform hover:-translate-y-2 transition duration-300">
     <div class="p-3 bg-gray-300 rounded-t border-b border-gray-400">
         <div class="flex justify-between items-center text-sm">
             <div class="font-bold uppercase">

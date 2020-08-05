@@ -25,21 +25,23 @@ This is a work in progress, we are building it on stream:
 -   [x] Make "stream" badge dynamic (or try)
 -   [x] Improve current streak relation so we don't need first
 -   [x] Fix current streak query (date calculation is off)
-
-## Today
-
 -   [x] Adjust streak query to only look for days prior to today
 -   [x] Add streak to livewire component? Nested components? 🤔
 -   [x] At mobile size, put toggle buttons in a popup, also make dots bigger?
 -   [x] Make stat tiles dynamic / decide what to do with them
 
-## Planned features
+## Today
 
+-   [x] Refactor how the day grid handles the habit ID
+-   [ ] Refactor how the selected / week days work within `week-view`
+-   [ ] Add loading state when changing days
 -   [ ] Finish hooking up tracking data to week tiles
--   [ ] Improve all the requests happening when days selected
--   [ ] Build navbar
 -   [ ] Combine dashboard and habits index
     -   [ ] Make create form toggleable
+
+## Planned features
+
+-   [ ] Build navbar
 -   [ ] Integrate user scoping and authentication
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track

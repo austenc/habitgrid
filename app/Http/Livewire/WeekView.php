@@ -11,15 +11,15 @@ class WeekView extends Component
 {
     public $habit;
     public $current;
-    public $endOfWeek;
+    public $lastDay;
 
     protected $listeners = ['dayChanged'];
 
-    public function mount(Habit $habit)
+    public function mount(Habit $habit, $currentDay = null)
     {
         $this->habit = $habit;
-        $this->endOfWeek = today()->toDateTimeString();
-        $this->current = today()->toDateTimeString();
+        $this->current = $currentDay;
+        $this->lastDay = today()->toDateTimeString();
     }
 
     public function dayChanged($day)
@@ -27,9 +27,14 @@ class WeekView extends Component
         $this->current = $day;
     }
 
-    public function getEndOfWeekCarbonProperty()
+    public function getEndOfWeekProperty()
     {
-        return new Carbon($this->endOfWeek);
+        return new Carbon($this->lastDay);
+    }
+
+    public function getStartOfWeekProperty()
+    {
+        return $this->endOfWeek->toImmutable()->subDay(4);
     }
 
     public function getCurrentDayProperty()
@@ -39,15 +44,15 @@ class WeekView extends Component
 
     public function previous()
     {
-        if ($this->endOfWeekCarbon->toImmutable()->subDay(4)->greaterThan(today()->subYear()->startOfWeek(Carbon::SUNDAY))) {
-            $this->endOfWeek = $this->endOfWeekCarbon->subDay()->toDateTimeString();
+        if ($this->startOfWeek->greaterThan(today()->subYear()->startOfWeek(Carbon::SUNDAY))) {
+            $this->lastDay = $this->endOfWeek->subDay()->toDateTimeString();
         }
     }
 
     public function next()
     {
-        if ($this->endOfWeekCarbon->lessThan(today())) {
-            $this->endOfWeek = $this->endOfWeekCarbon->addDay()->toDateTimeString();
+        if ($this->endOfWeek->lessThan(today())) {
+            $this->lastDay = $this->endOfWeek->addDay()->toDateTimeString();
         }
     }
 
@@ -60,7 +65,7 @@ class WeekView extends Component
     public function render()
     {
         return view('livewire.week-view', [
-            'week' => CarbonPeriod::create($this->endOfWeekCarbon->toImmutable()->subDay(4), $this->endOfWeekCarbon),
+            'week' => CarbonPeriod::create($this->startOfWeek, $this->endOfWeek),
         ]);
     }
 }

@@ -10,14 +10,14 @@ use Livewire\Component;
 
 class DayGrid extends Component
 {
-    public $habitId;
+    public $habit;
     public $selected = null;
 
     protected $listeners = ['daySelected', 'dayUnselected'];
 
     public function mount($habit = null)
     {
-        $this->habitId = $habit->id ?? null;
+        $this->habit = $habit;
     }
 
     public function daySelected($day)
@@ -39,16 +39,16 @@ class DayGrid extends Component
         return Habit::with(['tracks' => function ($query) {
             return $query->whereDate('tracked_on', $this->selected);
         }])
-        ->when($this->habitId ?? false, function ($query) {
-            return $query->where('id', $this->habitId);
+        ->when($this->habit, function ($query) {
+            return $query->where('id', $this->habit->id);
         })->get();
     }
 
     public function getTotalsByDayProperty()
     {
         return Track::selectRaw('COUNT(*) as total_completed, DATE(tracked_on) as day')
-            ->when($this->habitId ?? false, function ($query) {
-                return $query->where('habit_id', $this->habitId);
+            ->when($this->habit, function ($query) {
+                return $query->where('habit_id', $this->habit->id);
             })
             ->groupBy('day')
             ->get()
