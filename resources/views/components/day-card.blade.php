@@ -6,7 +6,7 @@
             <div class="font-bold uppercase">
                 {{ $date->format('D') }}
             </div>
-            <div class="font-mono">{{ $date->format('m/d') }}</div>
+            <div class="font-mono">{{ $date->format('m/d/y') }}</div>
         </div>
     </div>
     <div class="p-5 flex-grow">

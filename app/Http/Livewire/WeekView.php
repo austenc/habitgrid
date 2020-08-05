@@ -32,11 +32,6 @@ class WeekView extends Component
         return new Carbon($this->lastDay);
     }
 
-    public function getStartOfWeekProperty()
-    {
-        return $this->endOfWeek->toImmutable()->subDay(4);
-    }
-
     public function getCurrentDayProperty()
     {
         return new Carbon($this->current);
@@ -44,7 +39,7 @@ class WeekView extends Component
 
     public function previous()
     {
-        if ($this->startOfWeek->greaterThan(today()->subYear()->startOfWeek(Carbon::SUNDAY))) {
+        if ($this->endOfWeek->toImmutable()->subDay(4)->greaterThan(today()->subYear()->startOfWeek(Carbon::SUNDAY))) {
             $this->lastDay = $this->endOfWeek->subDay()->toDateTimeString();
         }
     }
@@ -65,7 +60,7 @@ class WeekView extends Component
     public function render()
     {
         return view('livewire.week-view', [
-            'week' => CarbonPeriod::create($this->startOfWeek, $this->endOfWeek),
+            'daysInWeek' => CarbonPeriod::create($this->endOfWeek->toImmutable()->subDay(4), $this->endOfWeek),
         ]);
     }
 }
