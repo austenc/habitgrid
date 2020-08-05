@@ -25,8 +25,4 @@
    <div class="mt-6">
        <livewire:day-grid :habit="$habit" /> 
    </div> 
-
-   <div class="my-10">
-       <h2 class="text-gray-400 font-semibold text-xl text-center">Recent Entries</h2>
-   </div>
 </div>

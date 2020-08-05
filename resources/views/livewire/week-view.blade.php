@@ -5,7 +5,13 @@
         </button>
         <div class="flex flex-grow space-x-3">
             @foreach ($daysInWeek as $day)
-                <x-day-card wire:click="selectDay('{{ $day }}')" :unit="$habit->unit" :selected="$day->toDateTimeString() == $current" :total="1" :date="$day" />
+                <x-day-card 
+                    wire:click="selectDay('{{ $day }}')" 
+                    :unit="$habit->unit" 
+                    :selected="$day->toDateTimeString() == $current" 
+                    :total="$totals->get($day->toImmutable()->format('Y-m-d')) ?? 0" 
+                    :date="$day" 
+                />
             @endforeach
         </div>
         <button wire:click="next" class="text-gray-500 hover:text-gray-700">

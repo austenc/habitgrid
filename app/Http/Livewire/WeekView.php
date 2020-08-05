@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Habit;
+use App\Track;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Livewire\Component;
@@ -12,13 +13,17 @@ class WeekView extends Component
     public $habit;
     public $current;
     public $lastDay;
+    public $totalsByDay;
 
-    protected $listeners = ['dayChanged'];
+    protected $listeners = [
+        'dayChanged' => 'dayChanged',
+        'habitTracked' => '$refresh',
+    ];
 
-    public function mount(Habit $habit, $currentDay = null)
+    public function mount(Habit $habit, $currentDay)
     {
         $this->habit = $habit;
-        $this->current = $currentDay;
+        $this->current = $currentDay ?? null;
         $this->lastDay = today()->toDateTimeString();
     }
 
@@ -61,6 +66,13 @@ class WeekView extends Component
     {
         return view('livewire.week-view', [
             'daysInWeek' => CarbonPeriod::create($this->endOfWeek->toImmutable()->subDay(4), $this->endOfWeek),
+            'totals' => Track::selectRaw('quantity, DATE(tracked_on) as day')
+                ->when($this->habit, function ($query) {
+                    return $query->where('habit_id', $this->habit->id);
+                })
+                ->groupBy('day', 'quantity')
+                ->get()
+                ->pluck('quantity', 'day'),
         ]);
     }
 }
