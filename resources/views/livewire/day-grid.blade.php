@@ -1,6 +1,11 @@
-<div>
+<div class="relative">
+    <div wire:loading class="absolute z-10 top-0 left-0 w-full h-full rounded border-red-400 bg-white bg-opacity-75">
+        <div class="flex w-full h-full items-center justify-center">
+            <x-icon-loader class="w-10 h-10 text-primary-600" />
+        </div>
+    </div>
     <x-card>
-
+        
         {{-- Horizontal --}}
         <div class="hidden xl:flex space-x-2 justify-center">
             <div class="space-y-1.5">

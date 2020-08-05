@@ -33,8 +33,8 @@ This is a work in progress, we are building it on stream:
 ## Today
 
 -   [x] Refactor how the day grid handles the habit ID
--   [ ] Refactor how the selected / week days work within `week-view`
--   [ ] Add loading state when changing days
+-   [x] Refactor how the selected / week days work within `week-view`
+-   [x] Add loading state when changing days
 -   [ ] Finish hooking up tracking data to week tiles
 -   [ ] Combine dashboard and habits index
     -   [ ] Make create form toggleable
