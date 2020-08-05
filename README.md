@@ -35,11 +35,10 @@ This is a work in progress, we are building it on stream:
 -   [x] Refactor how the day grid handles the habit ID
 -   [x] Refactor how the selected / week days work within `week-view`
 -   [x] Add loading state when changing days
--   [ ] Finish hooking up tracking data to week tiles
--   [ ] Combine dashboard and habits index
-    -   [ ] Make create form toggleable
+-   [x] Finish hooking up tracking data to week tiles
+-   [x] Combine dashboard and habits index and make create form toggleable
 
-## Planned features
+## Next time
 
 -   [ ] Build navbar
 -   [ ] Integrate user scoping and authentication
@@ -49,9 +48,9 @@ This is a work in progress, we are building it on stream:
 
 ## Future stream ideas (what are yours?)
 
+-   [ ] Flash messages / notifications components with Alpine JS
 -   [ ] Habit leaderboards
 -   [ ] Group habit tracking (like a team goal tracker)
+-   [ ] Building a form component system
 -   [ ] Public habit pages / toggle visibility
 -   [ ] Challenge friends to a habit battle
--   [ ] Building a form component system
--   [ ] Flash messages / notifications components with Alpine JS

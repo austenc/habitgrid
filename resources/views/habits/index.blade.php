@@ -1,13 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-4xl mx-auto mt-12">
-        <div class="flex items-baseline justify-between">
-            <h1 class="text-3xl font-semibold">Habits</h1>
-            <a href="/" class="text-primary-500 hover:text-primary-700">Back to dashboard</a>
+    <div class="mt-12">
+        <div x-data="{ open: false }">
+            <div class="flex items-baseline justify-between mb-3">
+                <h1 class="text-3xl font-semibold">Habits</h1>
+                <button @click.prevent="open = !open" type="button" x-text="open ? 'Hide Form' : 'Add New Habit'" class="block text-sm p-1 uppercase font-semibold tracking-wide text-link"></button>
+            </div>
+    
+            <div x-show="open" x-cloak class="mb-5"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-90"
+            >
+                <x-habit-form />
+            </div>
         </div>
 
-        <x-habit-form />
+        <livewire:day-grid />
 
         <div class="space-y-2 mt-8">
             <h2 class="text-gray-400 font-semibold text-xl text-center">Currently Tracking</h2>

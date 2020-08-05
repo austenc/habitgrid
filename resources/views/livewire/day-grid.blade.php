@@ -1,7 +1,9 @@
 <div class="relative">
-    <div wire:loading class="absolute z-10 top-0 left-0 w-full h-full rounded border-red-400 bg-white bg-opacity-75">
+    <div wire:loading class="absolute z-10 top-0 left-0 w-full h-full rounded border-red-400 bg-transparent xl:bg-white xl:bg-opacity-75">
         <div class="flex w-full h-full items-center justify-center">
-            <x-icon-loader class="w-10 h-10 text-primary-600" />
+            <div class="bg-black bg-opacity-75 p-4 rounded-lg xl:p-0 xl:bg-transparent">
+            	<x-icon-loader class="w-10 h-10 text-primary-600" />
+            </div>
         </div>
     </div>
     <x-card>
@@ -93,9 +95,8 @@
         @endif
     </x-card>
     @if ($selected)
-
         {{-- Desktop version --}}
-        <div class="hidden xl:block">
+        <div class="hidden xl:block bg-gray-300 p-8 mx-2 shadow-inner rounded-b">
             @include('tracks.edit')
         </div>
 
