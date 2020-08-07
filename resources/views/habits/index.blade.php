@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mt-12">
+    <div class="pt-12">
         <div x-data="{ open: false }">
             <div class="flex items-baseline justify-between mb-3">
                 <h1 class="text-3xl font-semibold">Habits</h1>

@@ -29,19 +29,23 @@ This is a work in progress, we are building it on stream:
 -   [x] Add streak to livewire component? Nested components? 🤔
 -   [x] At mobile size, put toggle buttons in a popup, also make dots bigger?
 -   [x] Make stat tiles dynamic / decide what to do with them
-
-## Today
-
 -   [x] Refactor how the day grid handles the habit ID
 -   [x] Refactor how the selected / week days work within `week-view`
 -   [x] Add loading state when changing days
 -   [x] Finish hooking up tracking data to week tiles
 -   [x] Combine dashboard and habits index and make create form toggleable
 
+## Today
+-   [ ] Build navbar + responsive version
+-   [ ] Make proper dashboard page
+    -   [ ] # tracked in past 7 days 
+    -   [ ] Best streak
+    -   [ ] ??? Chat suggestion
+-   [ ] Notifications / toast messages
+-   [ ] Integrate user scoping and authentication
+
 ## Next time
 
--   [ ] Build navbar
--   [ ] Integrate user scoping and authentication
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
 -   [ ] Add loading states to buttons?
