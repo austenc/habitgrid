@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="pt-12">
+    <div class="py-12">
         <div x-data="{ open: false }">
             <div class="flex items-baseline justify-between mb-3">
                 <h1 class="text-3xl font-semibold">Habits</h1>
@@ -20,10 +20,7 @@
             </div>
         </div>
 
-        <livewire:day-grid />
-
-        <div class="space-y-2 mt-8">
-            <h2 class="text-gray-400 font-semibold text-xl text-center">Currently Tracking</h2>
+        <div class="space-y-2">
             @foreach ($habits as $habit)
                 <x-card>
                     <div class="flex justify-between items-center">

@@ -15,6 +15,7 @@ class Habit extends Model
         return $this->hasMany(Track::class);
     }
 
+    // Thanks Rel904 <3
     public function currentStreak()
     {
         $streaksByRow = DB::table('tracks')

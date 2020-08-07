@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'HabitController@index');
+Route::redirect('/', '/dashboard');
 
-Route::get('/dashboard', 'HabitController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController')->name('dashboard');
 
 Route::resource('habits', 'HabitController');

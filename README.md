@@ -36,16 +36,15 @@ This is a work in progress, we are building it on stream:
 -   [x] Combine dashboard and habits index and make create form toggleable
 
 ## Today
--   [ ] Build navbar + responsive version
--   [ ] Make proper dashboard page
-    -   [ ] # tracked in past 7 days 
-    -   [ ] Best streak
-    -   [ ] ??? Chat suggestion
--   [ ] Notifications / toast messages
--   [ ] Integrate user scoping and authentication
+-   [x] Build navbar + responsive version
+-   [x] Make proper dashboard page with stat tiles
 
 ## Next time
-
+    
+-   [ ] Notifications / toast messages
+-   [ ] Integrate user scoping and authentication
+-   [ ] Fix modal margin bug
+-   [ ] Fix tooltip alignment
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
 -   [ ] Add loading states to buttons?
