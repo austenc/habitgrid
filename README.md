@@ -11,7 +11,8 @@ This is a work in progress, we are building it on stream:
 ## Today
 
 -   [x] Upgrade TailwindCSS to 1.7 🚀
--   [ ] Fix modal margin bug at mobile size
+-   [x] Fix modal margin bug at mobile size
+-   [ ] Fix "tracked in past week" to get total habits, not tracks
 -   [ ] Fix tooltip alignment
     -   [ ] Add additional info about which habits are tracked
 -   [ ] Integrate user scoping and authentication

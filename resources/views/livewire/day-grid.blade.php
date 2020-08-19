@@ -61,7 +61,6 @@
                         <div class="flex flex-wrap leading-4" x-data>
                             @foreach ($daysInMonth as $day)
                                 <span wire:click="toggleDay('{{ $day }}')" 
-                                    @click.prevent="document.body.classList.toggle('fixed'); document.body.classList.toggle('xl:static')"
                                     class="{{ $this->classForDay($day) }} block mr-2 mb-2 w-6 h-6 rounded border-2 border-transparent"
                                 >
                                     <x-tooltip :title="$day->format('D M d, Y')">

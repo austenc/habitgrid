@@ -42,7 +42,7 @@
         </div>
 
         {{-- Mobile menu --}}
-        <div 
+        <div x-cloak
             x-show.transition.origin.top.left="open" 
             class="-mb-2 mt-2 md:hidden divide-y border-t border-gray-700 border-opacity-25 flex flex-col divide-gray-700 divide-opacity-25"
         >
