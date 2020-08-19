@@ -19,7 +19,7 @@
                 @endforeach
             </div>
         
-            <div class="">
+            <div>
                 <div class="w-full flex space-x-1 text-xs text-gray-500">
                     @foreach ($weeks as $week)
                         <div class="w-4 h-4">
@@ -37,9 +37,22 @@
                                 <span wire:click="toggleDay('{{ $day }}')" 
                                     class="{{ $this->classForDay($day) }} block w-4 h-4 rounded border-2 border-transparent"
                                 >
-                                    <x-tooltip :title="$day->format('M d, Y')">
+                                    <x-tooltip>
                                         <span class="inline-block w-full h-full">
-                                            <span class="sr-only">{{ $day->format('Y-m-d') }}</span>
+                                            <x-slot name="title">
+                                                <span class="sr-only">{{ $day->format('Y-m-d') }}</span>
+                                                {{ $day->format('M d, Y') }}
+                                            </x-slot>
+                                            <x-slot name="label">Completed</x-slot>
+                                            <x-slot name="body">
+                                                @empty ($this->habitsByDay->get($day->format('Y-m-d')))
+                                                    None
+                                                @else
+                                                    @foreach ($this->habitsByDay->get($day->format('Y-m-d')) as $habitName)
+                                                        <span class="block my-1">{{ $habitName }} </span>
+                                                    @endforeach
+                                                @endempty
+                                            </x-slot>
                                         </span>
                                     </x-tooltip>
                                 </span>

@@ -24,7 +24,7 @@ module.exports = {
                 primary: defaultColors.purple,
             },
             spacing: {
-                '1.5': '0.325rem',
+                '1/2': '50%',
             },
         },
     },

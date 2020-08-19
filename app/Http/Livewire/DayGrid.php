@@ -44,14 +44,31 @@ class DayGrid extends Component
         })->get();
     }
 
-    public function getTotalsByDayProperty()
+    protected function tracksByDay()
     {
-        return Track::selectRaw('COUNT(*) as total_completed, DATE(tracked_on) as day')
+        return Track::with('habit')
             ->when($this->habit, function ($query) {
                 return $query->where('habit_id', $this->habit->id);
             })
-            ->groupBy('day')
+            ->whereBetween('tracked_on', [
+                today()->subYear()->startOfWeek(Carbon::SUNDAY),
+                today(),
+            ]);
+    }
+
+    public function getHabitsByDayProperty()
+    {
+        return $this->tracksByDay()
+            ->selectRaw('DATE(tracked_on) as day, habit_id')
             ->get()
+            ->groupBy('day')->map->pluck('habit.name');
+    }
+
+    public function getTotalsByDayProperty()
+    {
+        return $this->tracksByDay()
+            ->selectRaw('COUNT(*) as total_completed, DATE(tracked_on) as day')
+            ->groupBy('day')
             ->pluck('total_completed', 'day');
     }
 
