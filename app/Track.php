@@ -15,8 +15,8 @@ class Track extends Model
 
     public function scopeTotalHabitsInPastWeek()
     {
-        return self::whereDate('tracked_on', '>=', today()->subWeek())
-            ->groupBy('habit_id')
-            ->count('habit_id');
+        return self::distinct('habit_id')
+                ->whereDate('tracked_on', '>=', today()->subWeek())
+                ->count('habit_id');
     }
 }
