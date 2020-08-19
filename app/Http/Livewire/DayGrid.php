@@ -136,7 +136,7 @@ class DayGrid extends Component
             return 'bg-primary-400';
         }
 
-        return 'bg-gray-400';
+        return 'bg-gray-300';
     }
 
     protected function daysFromPastYear($interval = null)

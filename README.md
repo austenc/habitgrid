@@ -8,6 +8,26 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
+## Today
+
+-   [x] Upgrade TailwindCSS to 1.7 🚀
+-   [ ] Fix modal margin bug at mobile size
+-   [ ] Fix tooltip alignment
+    -   [ ] Add additional info about which habits are tracked
+-   [ ] Integrate user scoping and authentication
+-   [ ] Notifications / toast messages
+-   [ ] Add support for tracking specific units when completing
+-   [ ] Add notes a given track
+
+## Future Streams (suggestions chat?)
+
+-   [ ] Flash messages / notifications components with Alpine JS
+-   [ ] Habit leaderboards
+-   [ ] Group habit tracking (like a team goal tracker)
+-   [ ] Building a form component system
+-   [ ] Public habit pages / toggle visibility
+-   [ ] Challenge friends to a habit battle
+
 ## Done
 
 -   [x] Build habit create form
@@ -34,26 +54,5 @@ This is a work in progress, we are building it on stream:
 -   [x] Add loading state when changing days
 -   [x] Finish hooking up tracking data to week tiles
 -   [x] Combine dashboard and habits index and make create form toggleable
-
-## Today
 -   [x] Build navbar + responsive version
 -   [x] Make proper dashboard page with stat tiles
-
-## Next time
-    
--   [ ] Notifications / toast messages
--   [ ] Integrate user scoping and authentication
--   [ ] Fix modal margin bug
--   [ ] Fix tooltip alignment
--   [ ] Add support for tracking specific units when completing
--   [ ] Add notes a given track
--   [ ] Add loading states to buttons?
-
-## Future stream ideas (what are yours?)
-
--   [ ] Flash messages / notifications components with Alpine JS
--   [ ] Habit leaderboards
--   [ ] Group habit tracking (like a team goal tracker)
--   [ ] Building a form component system
--   [ ] Public habit pages / toggle visibility
--   [ ] Challenge friends to a habit battle

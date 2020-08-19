@@ -1,5 +1,5 @@
 <div class="w-full transition-all py-2 md:py-0 md:h-16 bg-gray-800 text-gray-300">
-    <div class="h-full" x-data="{ open: true }">
+    <div class="h-full" x-data="{ open: false }">
         <div class="container h-full">
             <div class="flex h-full items-center">
                 <a href="{{ url('/') }}" class="font-extrabold text-gray-200 text-lg hover:text-white">

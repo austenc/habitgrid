@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         @livewireStyles
     </head>
-    <body class="font-sans antialiased text-gray-600 bg-gray-100">
+    <body class="font-sans antialiased text-gray-600 bg-gray-200">
         @includeIf('nav')
         <div class="container">
             @yield('content')

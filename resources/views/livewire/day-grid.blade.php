@@ -96,12 +96,14 @@
     </x-card>
     @if ($selected)
         {{-- Desktop version --}}
-        <div class="hidden xl:block bg-gray-300 p-8 mx-2 shadow-inner rounded-b">
-            @include('tracks.edit')
+        <div class="mt-px mx-2 hidden xl:block bg-gray-100 shadow-inner rounded-b">
+            <div class="shadow-xs p-8">
+                @include('tracks.edit')
+            </div>
         </div>
 
         {{-- Mobile version --}}
-        <div class="xl:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 p-8" x-data>
+        <div class="p-8 xl:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-75" x-data>
             <div class="relative mt-20"
                 @click.away="window.livewire.emit('dayUnselected')" 
                 @keydown.escape.window="window.livewire.emit('dayUnselected')" 

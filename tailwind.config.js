@@ -1,6 +1,7 @@
 let defaultColors = require('tailwindcss/defaultConfig').theme.colors
 
 module.exports = {
+    experimental: 'all',
     plugins: [require('@tailwindcss/custom-forms')],
     purge: [
         'app/**/*.php',
