@@ -1,8 +1,6 @@
 @props(['habit', 'action', 'method'])
 
-<form action="{{ $action ?? route('habits.store') }}" method="POST">
-    @csrf
-    @method($method ?? 'POST')
+<x-form :action="$action ?? route('habits.store')" :method="empty($action) ? null : 'PUT'">
     <x-card>
         <label class="block text-sm font-medium">
             Habit Name
@@ -28,4 +26,4 @@
             </button>
         </div>
     </x-card>
-</form>
+</x-form>
