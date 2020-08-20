@@ -8,9 +8,10 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## Next Stream
+## Today
 
--   [ ] Integrate user scoping and authentication
+-   [ ] User authentication
+-   [ ] Scoping what we've built to a given user
 -   [ ] Notifications / toast messages
 
 ## Future Streams (suggestions chat?)
