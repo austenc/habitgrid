@@ -8,14 +8,19 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## Next Time
+## TODAY
 
--   [ ] Scoping what we've built to a given user
+-   [x] Make dashboard a Livewire component
+-   [ ] Scoping what we've built to a single user
+    -   [ ] database fields for user_id
+    -   [ ] authorization
+    -   [ ] scoping so you can only see your own habits
 -   [ ] Notifications / toast messages
 
 ## Future Streams (suggestions chat?)
 
 -   [ ] Put recent dates on the day grid first at mobile size
+-   [ ] Add "mini grid" of recent month/weeks on habit index view
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
 -   [ ] Flash messages / notifications components with Alpine JS
@@ -59,7 +64,7 @@ This is a work in progress, we are building it on stream:
 -   [x] Fix tooltip alignment
     -   [x] Add additional info about which habits are tracked
 -   [x] User authentication
-    - [x] Build a way to log out
-    - [x] Build a login form
-    - [x] Add validation to register and login forms
-    - [x] Add a confirmation dialog to log out button with alpine
+    -   [x] Build a way to log out
+    -   [x] Build a login form
+    -   [x] Add validation to register and login forms
+    -   [x] Add a confirmation dialog to log out button with alpine

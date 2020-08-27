@@ -8,7 +8,25 @@ use Illuminate\Support\Facades\DB;
 
 class Habit extends Model
 {
-    protected $guarded = ['id'];
+    protected $guarded = [];
+
+    protected static function booted()
+    {
+        static::creating(function ($habit) {
+            if (auth()->check()) {
+                $habit->user_id = auth()->id();
+            }
+        });
+
+        static::addGlobalScope('user', function (Builder $builder) {
+            $builder->where('user_id', auth()->id());
+        });
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 
     public function tracks()
     {

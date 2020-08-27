@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Habit;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -10,9 +11,22 @@ class HabitTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_see_create_form()
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = factory(User::class)->create();
+    }
+
+    public function test_guest_redirected_to_login_from_index()
     {
         $response = $this->get(route('habits.index'));
+        $response->assertRedirect(route('login'));
+    }
+
+    public function test_can_see_create_form()
+    {
+        $response = $this->actingAs($this->user)->get(route('habits.index'));
         $response->assertSuccessful();
         $response->assertSee('Habit Name');
         $response->assertSee('action="'.route('habits.store').'"', false);
@@ -20,14 +34,14 @@ class HabitTest extends TestCase
 
     public function test_name_required_when_creating()
     {
-        $response = $this->post(route('habits.store'));
+        $response = $this->actingAs($this->user)->post(route('habits.store'));
         $response->assertSessionHasErrors(['name' => 'The name field is required.']);
     }
 
     public function test_can_create()
     {
         // post data to the "store" route
-        $response = $this->post(route('habits.store'), [
+        $response = $this->actingAs($this->user)->post(route('habits.store'), [
             'name' => 'Drink Water',
             'goal' => 2,
             'unit' => 'gallons',
@@ -41,13 +55,14 @@ class HabitTest extends TestCase
             'name' => 'Drink Water',
             'goal' => 2,
             'unit' => 'gallons',
+            'user_id' => $this->user->id,
         ]);
     }
 
     public function test_can_see_edit_form()
     {
         $habit = factory(Habit::class)->create();
-        $response = $this->get(route('habits.edit', $habit));
+        $response = $this->actingAs($this->user)->get(route('habits.edit', $habit));
         $response->assertSuccessful();
         $response->assertViewHas('habit', $habit);
         $response->assertSee(route('habits.update', $habit));
@@ -57,7 +72,7 @@ class HabitTest extends TestCase
     {
         $habit = factory(Habit::class)->create();
 
-        $response = $this->put(route('habits.update', $habit), [
+        $response = $this->actingAs($this->user)->put(route('habits.update', $habit), [
             'goal' => 2,
             'unit' => 'gallons',
         ]);
@@ -68,10 +83,10 @@ class HabitTest extends TestCase
     public function test_can_update()
     {
         // make habit
-        $habit = factory(Habit::class)->create();
+        $habit = factory(Habit::class)->create(['user_id' => $this->user->id]);
 
         // post some data to the habit update route
-        $response = $this->put(route('habits.update', $habit), [
+        $response = $this->actingAs($this->user)->put(route('habits.update', $habit), [
             'name' => 'Drink Water',
             'goal' => 2,
             'unit' => 'gallons',
@@ -89,6 +104,17 @@ class HabitTest extends TestCase
             'name' => 'Drink Water',
             'goal' => 2,
             'unit' => 'gallons',
+            'user_id' => $this->user->id,
         ]);
+    }
+
+    public function test_user_only_sees_own_habits()
+    {
+        $habitOfOtherUser = factory(Habit::class)->create();
+        $habit = factory(Habit::class)->create(['user_id' => $this->user->id]);
+        $response = $this->actingAs($this->user)->get(route('habits.index'));
+        $habitsInView = $response->viewData('habits');
+        $this->assertTrue($habitsInView->contains($habit));
+        $this->assertFalse($habitsInView->contains($habitOfOtherUser));
     }
 }

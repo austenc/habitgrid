@@ -16,6 +16,7 @@ class CreateHabitsTable extends Migration
         Schema::create('habits', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->bigInteger('user_id');
             $table->string('goal')->nullable();
             $table->string('unit')->nullable();
             $table->timestamps();

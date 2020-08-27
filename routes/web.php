@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
 
-Route::get('/dashboard', 'DashboardController')->name('dashboard');
+Route::livewire('/dashboard', 'dashboard')->name('dashboard');
 
-Route::resource('habits', 'HabitController');
+Route::resource('habits', 'HabitController')->middleware('auth');
 
 Route::livewire('/register', 'register')->name('register');
 Route::livewire('/login', 'login')->name('login');

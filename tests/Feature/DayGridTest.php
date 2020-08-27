@@ -26,9 +26,11 @@ class DayGridTest extends TestCase
         $this->habit = factory(Habit::class)->create();
     }
 
-    public function test_dashboard_shows_grid_component()
+    public function test_dashboard_shows_components()
     {
-        $this->get('/dashboard')->assertSeeLivewire('day-grid');
+        $this->get('/dashboard')
+            ->assertSeeLivewire('dashboard')
+            ->assertSeeLivewire('day-grid');
     }
 
     public function test_can_select_new_day()
