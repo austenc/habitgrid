@@ -10,20 +10,18 @@ This is a work in progress, we are building it on stream:
 
 ## TODAY
 
--   [x] Make dashboard a Livewire component
--   [ ] Scoping what we've built to a single user
-    -   [ ] database fields for user_id
-    -   [ ] authorization
-    -   [ ] scoping so you can only see your own habits
--   [ ] Notifications / toast messages
+-   [x] Finish scoping of user system
+-   [ ] Add account credentials not found error to login component + link to register
+-   [ ] Pagination of habit index page
 
 ## Future Streams (suggestions chat?)
 
+-   [ ] Build profile component
 -   [ ] Put recent dates on the day grid first at mobile size
--   [ ] Add "mini grid" of recent month/weeks on habit index view
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
--   [ ] Flash messages / notifications components with Alpine JS
+-   [ ] Add "mini grid" of recent month/weeks on habit index view
+-   [ ] Flash messages / toast notification components with Alpine JS
 -   [ ] Habit leaderboards
 -   [ ] Group habit tracking (like a team goal tracker)
 -   [ ] Building a form component system

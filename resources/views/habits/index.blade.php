@@ -8,14 +8,11 @@
                 <button @click.prevent="open = !open" type="button" x-text="open ? 'Hide Form' : 'Add New Habit'" class="block text-sm p-1 uppercase font-semibold tracking-wide text-link"></button>
             </div>
     
-            <div x-show="open" x-cloak class="mb-5"
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 transform scale-90"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-300"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-90"
-            >
+            @if ($habits->isEmpty())
+                <x-card x-show.transition="!open">You don't have any habits yet, <button @click.prevent="open = true" type="button" class="text-link">create one</button> to get started.</x-card>
+            @endif
+
+            <div x-show.transition.duration.400="open" x-cloak class="mb-5">
                 <x-habit-form />
             </div>
         </div>

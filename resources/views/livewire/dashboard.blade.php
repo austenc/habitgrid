@@ -23,7 +23,7 @@
         </x-card>
         <x-card class="flex-1">
             <div class="uppercase text-center border-primary-500 text-xs tracking-wide text-gray-500">
-                Total Habits Tracked
+                Total Habits
             </div>
             <div class="mt-2 text-center text-4xl font-bold">
                 {{ $totalHabits }}

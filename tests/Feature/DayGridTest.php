@@ -28,7 +28,7 @@ class DayGridTest extends TestCase
 
     public function test_dashboard_shows_components()
     {
-        $this->get('/dashboard')
+        $this->actingAs($this->habit->user)->get('/dashboard')
             ->assertSeeLivewire('dashboard')
             ->assertSeeLivewire('day-grid');
     }
