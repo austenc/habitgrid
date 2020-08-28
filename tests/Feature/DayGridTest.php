@@ -21,9 +21,9 @@ class DayGridTest extends TestCase
     {
         parent::setUp();
 
-        $this->component = Livewire::test(DayGrid::class);
-        $this->component->set('selected', today()->toDateTimeString());
         $this->habit = factory(Habit::class)->create();
+        $this->component = Livewire::actingAs($this->habit->user)->test(DayGrid::class);
+        $this->component->set('selected', today()->toDateTimeString());
     }
 
     public function test_dashboard_shows_components()

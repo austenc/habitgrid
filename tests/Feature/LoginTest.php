@@ -58,6 +58,15 @@ class LoginTest extends TestCase
             ->assertHasErrors(['password' => 'min']);
     }
 
+    public function test_bad_credentials_show_error_on_login()
+    {
+        $component = Livewire::test(Login::class)
+            ->set('email', 'example@example.com')
+            ->set('password', 'wrongpassword')
+            ->call('login')
+            ->assertHasErrors('password');
+    }
+
     public function test_authenticated_user_can_see_logout_button()
     {
         $user = factory(User::class)->create();

@@ -62,7 +62,7 @@ class HabitTest extends TestCase
     public function test_can_see_edit_form()
     {
         $habit = factory(Habit::class)->create();
-        $response = $this->actingAs($this->user)->get(route('habits.edit', $habit));
+        $response = $this->actingAs($habit->user)->get(route('habits.edit', $habit));
         $response->assertSuccessful();
         $response->assertViewHas('habit', $habit);
         $response->assertSee(route('habits.update', $habit));
@@ -72,7 +72,7 @@ class HabitTest extends TestCase
     {
         $habit = factory(Habit::class)->create();
 
-        $response = $this->actingAs($this->user)->put(route('habits.update', $habit), [
+        $response = $this->actingAs($habit->user)->put(route('habits.update', $habit), [
             'goal' => 2,
             'unit' => 'gallons',
         ]);

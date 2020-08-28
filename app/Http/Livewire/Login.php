@@ -20,6 +20,8 @@ class Login extends Component
         if (Auth::attempt($data)) {
             return redirect()->intended('/dashboard');
         }
+
+        $this->addError('password', 'Invalid email/password combination.');
     }
 
     public function render()

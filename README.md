@@ -11,7 +11,8 @@ This is a work in progress, we are building it on stream:
 ## TODAY
 
 -   [x] Finish scoping of user system
--   [ ] Add account credentials not found error to login component + link to register
+-   [x] Add account credentials not found error to login component + link to register
+-   [x] Fix tests
 -   [ ] Pagination of habit index page
 
 ## Future Streams (suggestions chat?)
