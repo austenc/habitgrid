@@ -8,21 +8,17 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## TODAY
-
--   [x] Finish scoping of user system
--   [x] Add account credentials not found error to login component + link to register
--   [x] Fix tests
--   [ ] Pagination of habit index page
+## NEXT STREAM
+-   [ ] Pagination of habit index page / convert to livewire components
+-   [ ] Build profile component
 
 ## Future Streams (suggestions chat?)
 
--   [ ] Build profile component
--   [ ] Put recent dates on the day grid first at mobile size
+-   [ ] Flash messages / toast notification components with Alpine JS
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
+-   [ ] Put recent dates on the day grid first at mobile size
 -   [ ] Add "mini grid" of recent month/weeks on habit index view
--   [ ] Flash messages / toast notification components with Alpine JS
 -   [ ] Habit leaderboards
 -   [ ] Group habit tracking (like a team goal tracker)
 -   [ ] Building a form component system
@@ -67,3 +63,6 @@ This is a work in progress, we are building it on stream:
     -   [x] Build a login form
     -   [x] Add validation to register and login forms
     -   [x] Add a confirmation dialog to log out button with alpine
+-   [x] Finish scoping of user system
+-   [x] Add account credentials not found error to login component + link to register
+-   [x] Fix tests
