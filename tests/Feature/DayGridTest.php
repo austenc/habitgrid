@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Habit;
 use App\Http\Livewire\DayGrid;
-use App\Track;
+use App\Models\Habit;
+use App\Models\Track;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire;

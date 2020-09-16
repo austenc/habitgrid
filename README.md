@@ -8,7 +8,10 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## NEXT STREAM
+## TODAY
+
+-   [ ] Upgrade to Livewire 2.0
+-   [ ] Fix performance issue
 -   [ ] Pagination of habit index page / convert to livewire components
 -   [ ] Build profile component
 

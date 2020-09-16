@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Habit;
+use App\Models\Habit;
 use Illuminate\Http\Request;
 
 class HabitController extends Controller

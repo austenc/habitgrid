@@ -1,15 +1,21 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Seeders;
 
-use App\Habit;
-use App\Track;
-use Faker\Generator as Faker;
+use App\Models\Habit;
+use App\Models\Track;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Track::class, function (Faker $faker) {
-    return [
-        'habit_id' => factory(Habit::class),
-        'quantity' => $faker->randomDigitNotNull,
-        'tracked_on' => $faker->dateTime(),
-    ];
-});
+class TrackFactory extends Factory
+{
+    protected $model = Track::class;
+
+    public function definition()
+    {
+        return [
+            'habit_id' => Habit::factory(),
+            'quantity' => $this->faker->randomDigitNotNull,
+            'tracked_on' => $this->faker->dateTime(),
+        ];
+    }
+}

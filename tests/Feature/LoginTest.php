@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Logout;
-use App\User;
+use App\Models\User;
 use Livewire;
 use Tests\TestCase;
 
