@@ -12,7 +12,12 @@
     <body class="font-sans antialiased text-gray-600 bg-gray-200">
         @includeIf('nav')
         <div class="container">
-            @yield('content')
+            {{-- TODO: convert HabitController to component and get rid of it --}}
+            @empty($slot)
+                @yield('content')            
+            @else
+                {{ $slot }}
+            @endempty
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
         @livewireScripts

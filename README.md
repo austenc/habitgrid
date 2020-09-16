@@ -10,7 +10,7 @@ This is a work in progress, we are building it on stream:
 
 ## TODAY
 
--   [ ] Upgrade to Livewire 2.0
+-   [x] Upgrade to Livewire 2.x and Laravel 8.x
 -   [ ] Fix performance issue
 -   [ ] Pagination of habit index page / convert to livewire components
 -   [ ] Build profile component
