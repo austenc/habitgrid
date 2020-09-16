@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Track extends Model
 {
+    use HasFactory;
+
     protected $guarded = ['id'];
 
     public function habit()
@@ -16,7 +19,7 @@ class Track extends Model
     public function scopeTotalHabitsInPastWeek()
     {
         return self::distinct('habit_id')
-                ->whereDate('tracked_on', '>=', today()->subWeek())
-                ->count('habit_id');
+            ->whereDate('tracked_on', '>=', today()->subWeek())
+            ->count('habit_id');
     }
 }

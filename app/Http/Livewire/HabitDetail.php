@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Habit;
+use App\Models\Habit;
 use Livewire\Component;
 
 class HabitDetail extends Component

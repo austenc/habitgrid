@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Habit;
-use App\Track;
+use App\Models\Habit;
+use App\Models\Track;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Livewire\Component;
@@ -39,9 +39,9 @@ class DayGrid extends Component
         return Habit::with(['tracks' => function ($query) {
             return $query->whereDate('tracked_on', $this->selected);
         }])
-        ->when($this->habit, function ($query) {
-            return $query->where('id', $this->habit->id);
-        })->get();
+            ->when($this->habit, function ($query) {
+                return $query->where('id', $this->habit->id);
+            })->get();
     }
 
     protected function tracksByDay()

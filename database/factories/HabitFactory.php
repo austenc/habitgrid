@@ -1,14 +1,20 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Habit;
-use App\User;
-use Faker\Generator as Faker;
+use App\Models\Habit;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Habit::class, function (Faker $faker) {
-    return [
-        'name' => $faker->catchPhrase,
-        'user_id' => factory(User::class),
-    ];
-});
+class HabitFactory extends Factory
+{
+    protected $model = Habit::class;
+
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->catchPhrase,
+            'user_id' => User::factory(),
+        ];
+    }
+}

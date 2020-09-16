@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Logout;
-use App\User;
+use App\Models\User;
 use Livewire;
 use Tests\TestCase;
 
@@ -17,7 +17,7 @@ class LoginTest extends TestCase
 
     public function test_existing_user_can_log_in()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::test(Login::class)
             ->set('email', $user->email)
@@ -69,13 +69,13 @@ class LoginTest extends TestCase
 
     public function test_authenticated_user_can_see_logout_button()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $this->actingAs($user)->get('/dashboard')->assertSeeLivewire('logout');
     }
 
     public function test_authenticated_user_can_logout()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::actingAs($user)
             ->test(Logout::class)

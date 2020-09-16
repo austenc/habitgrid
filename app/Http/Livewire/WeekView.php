@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Habit;
-use App\Track;
+use App\Models\Habit;
+use App\Models\Track;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Livewire\Component;
