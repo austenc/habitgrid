@@ -11,6 +11,16 @@
     </head>
     <body class="font-sans antialiased text-gray-600 bg-gray-200">
         @includeIf('nav')
+        @isset($title)
+            <div class="bg-gray-300 py-3">
+                <div class="container flex justify-between">
+                    <h1 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-400">
+                        {{ $title ?? null }}
+                    </h1>
+                    {{ $titleActions ?? null }}
+                </div>
+            </div>
+        @endisset
         <div class="container">
             {{-- TODO: convert HabitController to component and get rid of it --}}
             @empty($slot)

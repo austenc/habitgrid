@@ -1,7 +1,5 @@
 <div class="py-12">
-    <div class="flex items-baseline justify-between mb-3">
-        <h1 class="text-3xl font-semibold">Dashboard</h1>
-    </div>
+    <x-slot name="title">Dashboard</x-slot>
 
     <div class="space-y-3 sm:flex sm:space-x-5 sm:space-y-0">
         <x-card class="flex-1">

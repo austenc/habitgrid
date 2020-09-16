@@ -12,15 +12,15 @@ This is a work in progress, we are building it on stream:
 
 -   [x] Upgrade to Livewire 2.x and Laravel 8.x
 -   [x] Fix performance issue (it was debugbar + tooltip component having many views 😅)
--   [ ] Explore replacing some events with `$wire` / entangle
+-   [x] Explore replacing some events with `$wire` / entangle
 -   [ ] Pagination of habit index page / convert to livewire components
 -   [ ] Build profile component
+-   [ ] Flash messages / toast notification components with Alpine JS
 
 ## Future Streams (suggestions chat?)
 
--   [ ] Flash messages / toast notification components with Alpine JS
--   [ ] Add support for tracking specific units when completing
 -   [ ] Add notes a given track
+-   [ ] Add support for tracking specific units when completing
 -   [ ] Put recent dates on the day grid first at mobile size
 -   [ ] Add "mini grid" of recent month/weeks on habit index view
 -   [ ] Habit leaderboards
