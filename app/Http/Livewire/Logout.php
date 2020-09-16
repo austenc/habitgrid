@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class Logout extends Component
 {
-    protected $listeners = ['logout'];
-
     public function logout()
     {
         Auth::logout();

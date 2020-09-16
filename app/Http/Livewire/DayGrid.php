@@ -13,7 +13,7 @@ class DayGrid extends Component
     public $habit;
     public $selected = null;
 
-    protected $listeners = ['daySelected', 'dayUnselected'];
+    protected $listeners = ['daySelected'];
 
     public function mount($habit = null)
     {

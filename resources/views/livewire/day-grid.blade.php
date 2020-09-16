@@ -71,7 +71,7 @@
                         {{ $daysInMonth->first()->format('M') }}
                     </div>
                     <div class="flex-1">
-                        <div class="flex flex-wrap leading-4" x-data>
+                        <div class="flex flex-wrap leading-4">
                             @foreach ($daysInMonth as $day)
                                 <span wire:click="toggleDay('{{ $day }}')" 
                                     class="{{ $this->classForDay($day) }} block mr-2 mb-2 w-6 h-6 rounded border-2 border-transparent"
@@ -117,8 +117,8 @@
         {{-- Mobile version --}}
         <div class="p-8 xl:hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-75" x-data>
             <div class="relative mt-20"
-                @click.away="window.livewire.emit('dayUnselected')" 
-                @keydown.escape.window="window.livewire.emit('dayUnselected')" 
+                @click.away="$wire.dayUnselected()" 
+                @keydown.escape.window="$wire.dayUnselected()" 
             >
                 @include('tracks.edit')
             </div>

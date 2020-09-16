@@ -11,7 +11,8 @@ This is a work in progress, we are building it on stream:
 ## TODAY
 
 -   [x] Upgrade to Livewire 2.x and Laravel 8.x
--   [ ] Fix performance issue
+-   [x] Fix performance issue (it was debugbar + tooltip component having many views 😅)
+-   [ ] Explore replacing some events with `$wire` / entangle
 -   [ ] Pagination of habit index page / convert to livewire components
 -   [ ] Build profile component
 
