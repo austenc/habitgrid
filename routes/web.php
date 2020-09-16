@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HabitController;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\HabitDetail;
 use App\Http\Livewire\Habits;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Profile;
@@ -15,8 +16,9 @@ Route::get('/dashboard', Dashboard::class)
     ->middleware('auth');
 
 // TODO: remove the resource definition
-Route::resource('habits', HabitController::class)->except(['index'])->middleware('auth');
+Route::resource('habits', HabitController::class)->except(['index', 'edit'])->middleware('auth');
 Route::get('/habits', Habits::class)->name('habits.index')->middleware('auth');
+Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit')->middleware('auth');
 
 Route::get('/register', Register::class)->name('register');
 Route::get('/login', Login::class)->name('login');

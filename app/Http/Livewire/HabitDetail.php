@@ -7,14 +7,9 @@ use Livewire\Component;
 
 class HabitDetail extends Component
 {
-    public $habit;
+    public Habit $habit;
 
     protected $listeners = ['habitTracked'];
-
-    public function mount(Habit $habit)
-    {
-        $this->habit = $habit;
-    }
 
     public function habitTracked($habitId)
     {

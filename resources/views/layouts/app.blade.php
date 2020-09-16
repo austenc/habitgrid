@@ -13,8 +13,8 @@
         @includeIf('nav')
         @isset($title)
             <div class="bg-gray-300 py-3">
-                <div class="container flex justify-between">
-                    <h1 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-400">
+                <div class="container flex items-center justify-between">
+                    <h1 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-500">
                         {{ $title ?? null }}
                     </h1>
                     {{ $titleActions ?? null }}

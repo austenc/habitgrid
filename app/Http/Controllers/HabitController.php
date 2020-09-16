@@ -22,18 +22,6 @@ class HabitController extends Controller
         return redirect()->route('habits.index');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit(Habit $habit)
-    {
-        return view('habits.edit', [
-            'habit' => $habit,
-        ]);
-    }
-
     public function update(Request $request, Habit $habit)
     {
         $request->validate([
