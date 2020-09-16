@@ -15,7 +15,7 @@ class HabitTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
+        $this->user = User::factory()->create();
     }
 
     public function test_guest_redirected_to_login_from_index()
@@ -61,7 +61,7 @@ class HabitTest extends TestCase
 
     public function test_can_see_edit_form()
     {
-        $habit = factory(Habit::class)->create();
+        $habit = Habit::factory()->create();
         $response = $this->actingAs($habit->user)->get(route('habits.edit', $habit));
         $response->assertSuccessful();
         $response->assertViewHas('habit', $habit);
@@ -70,7 +70,7 @@ class HabitTest extends TestCase
 
     public function test_name_required_when_updating()
     {
-        $habit = factory(Habit::class)->create();
+        $habit = Habit::factory()->create();
 
         $response = $this->actingAs($habit->user)->put(route('habits.update', $habit), [
             'goal' => 2,
@@ -83,7 +83,7 @@ class HabitTest extends TestCase
     public function test_can_update()
     {
         // make habit
-        $habit = factory(Habit::class)->create(['user_id' => $this->user->id]);
+        $habit = Habit::factory()->create(['user_id' => $this->user->id]);
 
         // post some data to the habit update route
         $response = $this->actingAs($this->user)->put(route('habits.update', $habit), [
@@ -110,8 +110,8 @@ class HabitTest extends TestCase
 
     public function test_user_only_sees_own_habits()
     {
-        $habitOfOtherUser = factory(Habit::class)->create();
-        $habit = factory(Habit::class)->create(['user_id' => $this->user->id]);
+        $habitOfOtherUser = Habit::factory()->create();
+        $habit = Habit::factory()->create(['user_id' => $this->user->id]);
         $response = $this->actingAs($this->user)->get(route('habits.index'));
         $habitsInView = $response->viewData('habits');
         $this->assertTrue($habitsInView->contains($habit));

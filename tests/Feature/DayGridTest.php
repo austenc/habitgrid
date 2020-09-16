@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Http\Livewire\DayGrid;
 use App\Models\Habit;
 use App\Models\Track;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire;
 use Tests\TestCase;
@@ -21,7 +20,7 @@ class DayGridTest extends TestCase
     {
         parent::setUp();
 
-        $this->habit = factory(Habit::class)->create();
+        $this->habit = Habit::factory()->create();
         $this->component = Livewire::actingAs($this->habit->user)->test(DayGrid::class);
         $this->component->set('selected', today()->toDateTimeString());
     }
@@ -68,7 +67,7 @@ class DayGridTest extends TestCase
     {
         $this->component->call('removeTrack', $this->habit->id);
 
-        $trackOnOtherDay = factory(Track::class)->create([
+        $trackOnOtherDay = Track::factory()->create([
             'habit_id' => $this->habit->id,
             'tracked_on' => today()->subDay(3)->startOfDay(),
         ]);
