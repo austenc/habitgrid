@@ -8,14 +8,11 @@ This is a work in progress, we are building it on stream:
 
 🎥 [Tune in on Twitch](https://twitch.tv/austencam)
 
-## TODAY
+## UP NEXT
 
--   [x] Upgrade to Livewire 2.x and Laravel 8.x
--   [x] Fix performance issue (it was debugbar + tooltip component having many views 😅)
--   [x] Explore replacing some events with `$wire` / entangle
--   [ ] Pagination of habit index page / convert to livewire components
 -   [ ] Build profile component
 -   [ ] Flash messages / toast notification components with Alpine JS
+-   [ ] Paginate habits index page with livewire
 
 ## Future Streams (suggestions chat?)
 
@@ -31,6 +28,10 @@ This is a work in progress, we are building it on stream:
 
 ## Done
 
+-   [x] Upgrade to Livewire 2.x and Laravel 8.x
+-   [x] Fix performance issue (it was debugbar + tooltip component having many views 😅)
+-   [x] Explore replacing some events with `$wire` / entangle
+-   [x] Convert habit controller to livewire components
 -   [x] Build habit create form
 -   [x] Build tooltip when hovering over a given day on the grid
 -   [x] Fix bug in grid display to sort by start of week (`startOfWeek()` in carbon?)
