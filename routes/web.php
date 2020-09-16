@@ -15,8 +15,6 @@ Route::get('/dashboard', Dashboard::class)
     ->name('dashboard')
     ->middleware('auth');
 
-// TODO: remove the resource definition
-Route::resource('habits', HabitController::class)->except(['index', 'edit'])->middleware('auth');
 Route::get('/habits', Habits::class)->name('habits.index')->middleware('auth');
 Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit')->middleware('auth');
 

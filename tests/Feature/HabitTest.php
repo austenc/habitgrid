@@ -2,9 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\HabitForm;
+use App\Http\Livewire\Habits;
 use App\Models\Habit;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class HabitTest extends TestCase
@@ -29,26 +32,26 @@ class HabitTest extends TestCase
         $response = $this->actingAs($this->user)->get(route('habits.index'));
         $response->assertSuccessful();
         $response->assertSee('Habit Name');
-        $response->assertSee('action="'.route('habits.store').'"', false);
+        $response->assertSeeLivewire('habit-form');
     }
 
-    public function test_name_required_when_creating()
+    // TODO: write authorization tests
+
+    public function test_name_required_when_saving()
     {
-        $response = $this->actingAs($this->user)->post(route('habits.store'));
-        $response->assertSessionHasErrors(['name' => 'The name field is required.']);
+        Livewire::test(HabitForm::class)
+            ->call('save')
+            ->assertHasErrors(['habit.name' => 'required']);
     }
 
     public function test_can_create()
     {
-        // post data to the "store" route
-        $response = $this->actingAs($this->user)->post(route('habits.store'), [
-            'name' => 'Drink Water',
-            'goal' => 2,
-            'unit' => 'gallons',
-        ]);
-
-        // see successful response
-        $response->assertRedirect(route('habits.index'));
+        Livewire::actingAs($this->user)->test(HabitForm::class)
+            ->set('habit.name', 'Drink Water')
+            ->set('habit.goal', 2)
+            ->set('habit.unit', 'gallons')
+            ->call('save')
+            ->assertEmitted('saved');
 
         // see that the data was stored in the databse
         $this->assertDatabaseHas('habits', [
@@ -64,20 +67,7 @@ class HabitTest extends TestCase
         $habit = Habit::factory()->create();
         $response = $this->actingAs($habit->user)->get(route('habits.edit', $habit));
         $response->assertSuccessful();
-        $response->assertViewHas('habit', $habit);
-        $response->assertSee(route('habits.update', $habit));
-    }
-
-    public function test_name_required_when_updating()
-    {
-        $habit = Habit::factory()->create();
-
-        $response = $this->actingAs($habit->user)->put(route('habits.update', $habit), [
-            'goal' => 2,
-            'unit' => 'gallons',
-        ]);
-
-        $response->assertSessionHasErrors(['name' => 'The name field is required.']);
+        $response->assertSeeLivewire('habit-form');
     }
 
     public function test_can_update()
@@ -85,18 +75,20 @@ class HabitTest extends TestCase
         // make habit
         $habit = Habit::factory()->create(['user_id' => $this->user->id]);
 
-        // post some data to the habit update route
-        $response = $this->actingAs($this->user)->put(route('habits.update', $habit), [
+        Livewire::actingAs($this->user)->test(HabitForm::class, ['habit' => $habit])
+            ->set('habit.name', 'Drink Water')
+            ->set('habit.goal', 2)
+            ->set('habit.unit', 'gallons')
+            ->call('save')
+            ->assertEmitted('saved');
+
+        // see that the data was stored in the databse
+        $this->assertDatabaseHas('habits', [
             'name' => 'Drink Water',
             'goal' => 2,
             'unit' => 'gallons',
+            'user_id' => $this->user->id,
         ]);
-
-        // see redirected back to habit form
-        $response->assertRedirect(route('habits.edit', $habit));
-
-        // see message is flashed to the session
-        $response->assertSessionHas(['message' => 'Habit updated successfully.']);
 
         // see that it persisted in the database
         $this->assertDatabaseHas('habits', [
@@ -112,9 +104,8 @@ class HabitTest extends TestCase
     {
         $habitOfOtherUser = Habit::factory()->create();
         $habit = Habit::factory()->create(['user_id' => $this->user->id]);
-        $response = $this->actingAs($this->user)->get(route('habits.index'));
-        $habitsInView = $response->viewData('habits');
-        $this->assertTrue($habitsInView->contains($habit));
-        $this->assertFalse($habitsInView->contains($habitOfOtherUser));
+        $component = Livewire::actingAs($this->user)->test(Habits::class);
+        $this->assertTrue($component->viewData('habits')->contains($habit));
+        $this->assertFalse($component->viewData('habits')->contains($habitOfOtherUser));
     }
 }

@@ -9,6 +9,11 @@ class HabitForm extends Component
 {
     public Habit $habit;
 
+    public function mount(Habit $habit)
+    {
+        $this->habit = $habit ?? new Habit;
+    }
+
     protected $rules = [
         'habit.name' => 'required',
         'habit.goal' => 'present',
@@ -19,6 +24,7 @@ class HabitForm extends Component
     {
         $this->validate();
         $this->habit->save();
+        $this->emitUp('saved');
     }
 
     public function render()

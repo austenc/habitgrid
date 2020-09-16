@@ -9,7 +9,7 @@
         @endif
 
         <div x-show.transition.duration.400="open" x-cloak class="mb-5">
-            <x-habit-form />
+            <livewire:habit-form />
         </div>
     </div>
 
