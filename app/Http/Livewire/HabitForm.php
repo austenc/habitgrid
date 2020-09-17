@@ -25,5 +25,6 @@ class HabitForm extends Component
         $this->validate();
         $this->habit->save();
         $this->emitUp('saved');
+        $this->toast('Saved');
     }
 }

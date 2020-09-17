@@ -10,12 +10,13 @@ This is a work in progress, we are building it on stream:
 
 ## UP NEXT
 
--   [ ] Flash messages / toast notification components with Alpine JS
+-   [x] Flash messages / toast notification components with Alpine JS
 -   [ ] Build profile component
 -   [ ] Paginate habits index page with livewire
 
 ## Future Streams (suggestions chat?)
 
+-   [ ] Support multiple stacked toast messages if you smash on a button
 -   [ ] Add notes a given track
 -   [ ] Add support for tracking specific units when completing
 -   [ ] Put recent dates on the day grid first at mobile size

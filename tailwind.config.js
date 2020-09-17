@@ -1,4 +1,5 @@
-let defaultColors = require('tailwindcss/defaultConfig').theme.colors
+let colors = require('tailwindcss/lib/flagged/uniformColorPalette').default
+    .theme.colors
 
 module.exports = {
     experimental: 'all',
@@ -21,7 +22,7 @@ module.exports = {
         },
         extend: {
             colors: {
-                primary: defaultColors.purple,
+                primary: colors.purple,
             },
             spacing: {
                 '1/2': '50%',

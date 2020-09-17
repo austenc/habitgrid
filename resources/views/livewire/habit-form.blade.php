@@ -13,7 +13,7 @@
             </div>
             <div class="mt-3 text-right">
                 <button class="px-3 py-2 text-white rounded bg-primary-700 hover:bg-primary-500">
-                    @if ($habit ?? false)
+                    @if ($habit->exists)
                         Update Habit
                     @else
                         Create Habit
