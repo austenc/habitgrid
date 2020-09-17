@@ -31,16 +31,20 @@
                         </div>
                     </div>
                     <div class="md:w-2/3 space-y-3">
-                        <div class="space-y-3 lg:space-y-0 lg:flex lg:items-center lg:space-x-3">
-                            <div class="flex-1 text-right">
-                                <div class="w-12 h-12">
-                                    <span class="bg-gray-700 shadow w-10 h-10 rounded-full text-gray-500 transition duration-300 hover:text-gray-300">
-                                        <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
-                                    </span>
-                                </div>
+                        <div class="space-y-3 lg:space-y-0 lg:flex lg:space-x-3">
+                            <div class="">
+                                @if ($photo || $user->photo)
+                                    <img src="{{ optional($photo)->temporaryUrl() ?? $user->photo }}" class="w-12 h-12 rounded-full border-2 border-white shadow-sm">
+                               @else
+                                    <div class="w-12 h-12">
+                                        <span class="bg-gray-700 shadow w-10 h-10 rounded-full text-gray-500 transition duration-300 hover:text-gray-300">
+                                            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                             <div class="flex-1">
-                                <x-input name="upload" label="Upload photo" />
+                                <x-input name="photo" wire:model="photo" type="file" class="w-full border-gray-200 hover:border-gray-400 border-2 border-dashed p-3 rounded bg-white bg-opacity-50 hover:bg-opacity-100" />
                             </div>
                         </div>
                     </div>

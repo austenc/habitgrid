@@ -23,9 +23,13 @@
                         <div class="flex items-center space-x-6">
                             <livewire:logout />
                             <a href="{{ route('profile') }}" class="inline-flex items-center space-x-2">
-                                <span class="bg-gray-700 shadow w-10 h-10 rounded-full text-gray-500 transition duration-300 hover:text-gray-300">
-                                    <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
-                                </span>
+                                @if (auth()->user()->photo)
+                                    <img src="{{ auth()->user()->photo }}" class="inline-block rounded-full w-10 h-10">
+                                @else
+                                    <span class="bg-gray-700 shadow w-10 h-10 rounded-full text-gray-500 transition duration-300 hover:text-gray-300">
+                                        <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                @endif
                                 <div class="text-xs">
                                     {{ auth()->user()->name }}
                                 </div>
