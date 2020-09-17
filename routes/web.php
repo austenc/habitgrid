@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');
 
-Route::get('/dashboard', Dashboard::class)
-    ->name('dashboard')
-    ->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/habits', Habits::class)->name('habits.index');
+    Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit');
+    Route::get('/profile', Profile::class)->name('profile');
+});
 
-Route::get('/habits', Habits::class)->name('habits.index')->middleware('auth');
-Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit')->middleware('auth');
-
-Route::get('/register', Register::class)->name('register');
-Route::get('/login', Login::class)->name('login');
-Route::get('/profile', Profile::class)->name('profile')->middleware('auth');
+Route::middleware('guest')->group(function () {
+    Route::get('/register', Register::class)->name('register');
+    Route::get('/login', Login::class)->name('login');
+});

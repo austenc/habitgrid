@@ -23,9 +23,4 @@ class Login extends Component
 
         $this->addError('password', 'Invalid email/password combination.');
     }
-
-    public function render()
-    {
-        return view('livewire.login');
-    }
 }

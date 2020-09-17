@@ -10,8 +10,8 @@ This is a work in progress, we are building it on stream:
 
 ## UP NEXT
 
--   [ ] Build profile component
 -   [ ] Flash messages / toast notification components with Alpine JS
+-   [ ] Build profile component
 -   [ ] Paginate habits index page with livewire
 
 ## Future Streams (suggestions chat?)

@@ -22,12 +22,7 @@
             </div>
         @endisset
         <div class="container">
-            {{-- TODO: convert HabitController to component and get rid of it --}}
-            @empty($slot)
-                @yield('content')            
-            @else
-                {{ $slot }}
-            @endempty
+            {{ $slot }}
         </div>
         @livewireScripts
         <script src="{{ mix('js/app.js') }}"></script>
