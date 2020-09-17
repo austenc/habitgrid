@@ -15,9 +15,4 @@ class HabitDetail extends Component
     {
         $this->habit = Habit::findOrFail($habitId);
     }
-
-    public function render()
-    {
-        return view('livewire.habit-detail');
-    }
 }

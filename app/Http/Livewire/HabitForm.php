@@ -26,9 +26,4 @@ class HabitForm extends Component
         $this->habit->save();
         $this->emitUp('saved');
     }
-
-    public function render()
-    {
-        return view('livewire.habit-form');
-    }
 }

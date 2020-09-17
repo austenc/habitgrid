@@ -8,7 +8,6 @@ use Livewire\Component;
 class Habits extends Component
 {
     protected $listeners = ['saved' => 'render'];
-
     public $showForm = false;
 
     public function render()

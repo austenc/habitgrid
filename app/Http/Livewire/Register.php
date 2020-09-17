@@ -33,9 +33,4 @@ class Register extends Component
 
         $this->redirect(url('/'));
     }
-
-    public function render()
-    {
-        return view('livewire.register');
-    }
 }
