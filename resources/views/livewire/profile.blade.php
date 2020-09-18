@@ -16,7 +16,7 @@
                                 <x-input name="user.name" wire:model.defer="user.name" label="Your Name" />
                             </div>
                             <div class="flex-1">
-                                <x-input name="user.email" wire:model.defer="user.email" label="Email" />
+                                <x-input name="user.email" wire:model="user.email" label="Email" />
                             </div>
                         </div>
                         <div class="mt-3">
