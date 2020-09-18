@@ -1,7 +1,7 @@
 <div class="py-8">
     <x-slot name="title">Habits</x-slot>
     <x-slot name="titleActions">
-        <button x-data="{ open: false }" @click.prevent="open = !open; @this.set('showForm', open)" type="button" x-text="open ? 'Hide Form' : 'Add New Habit'" class="inline-block text-sm p-1 uppercase font-semibold tracking-wide text-link">Add New Habit</button>
+        <button x-data="{ open: false }" @habit-created.window="@this.set('showForm', false)" @click.prevent="open = !open; @this.set('showForm', open)" type="button" x-text="open ? 'Hide Form' : 'Add New Habit'" class="inline-block text-sm p-1 uppercase font-semibold tracking-wide text-link">Add New Habit</button>
     </x-slot>
     <div x-data="{ open: @entangle('showForm') }">
         @if ($habits->isEmpty())

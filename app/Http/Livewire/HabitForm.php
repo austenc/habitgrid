@@ -23,8 +23,11 @@ class HabitForm extends Component
     public function save()
     {
         $this->validate();
+        $creating = empty($this->habit->id);
         $this->habit->save();
         $this->emitUp('saved');
-        $this->toast('Saved');
+        $creating && $this->dispatchBrowserEvent('habit-created');
+        $creating && $this->habit = new Habit;
+        $this->toast($creating ? 'Habit created, now follow through!' : 'Updated');
     }
 }
