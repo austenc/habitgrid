@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,6 +14,8 @@ class Profile extends Component
 
     public User $user;
     public $photo;
+    public $password;
+    public $password_confirmation;
 
     protected $rules = [
         'user.name' => 'required|min:2',
@@ -42,13 +45,29 @@ class Profile extends Component
     {
         $this->validate();
         $this->user->save();
+        $this->uploadPhoto();
+        $this->changePassword();
+        $this->toast('Saved');
+    }
+
+    protected function changePassword()
+    {
+        $this->validateOnly('password', ['password' => 'required|min:8|confirmed']);
+        $this->user->update([
+            'password' => Hash::make($this->password),
+        ]);
+        $this->password = null;
+        $this->password_confirmation = null;
+    }
+
+    protected function uploadPhoto()
+    {
         $this->photo && $this->user->update([
             'photo' => $this->photo->store('profile-photos/user/'.$this->user->id, 'public'),
         ]);
         $this->photo = null;
         $this->dispatchBrowserEvent('uploaded');
         $this->emit('photoUpdated');
-        $this->toast('Saved');
     }
 
     public function remove()

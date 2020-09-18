@@ -25,6 +25,24 @@
                     </div>
                 </div>
                 <div class="md:flex space-y-4 md:space-y-0 md:border-t border-gray-200 border-opacity-50 md:mt-6 pt-6">
+                    <div class="md:w-1/3 space-y-1 border-b border-gray-200 md:border-0">
+                        <div class="text-lg font-semibold">
+                            Change Password
+                        </div>
+                        <div class="text-gray-500 text-opacity-75 pb-2 text-sm">Leave the fields blank to keep it the same</div>
+                    </div>
+                    <div class="md:w-2/3 space-y-3">
+                        <div class="space-y-3 lg:space-y-0 lg:flex lg:space-x-3">
+                            <div class="flex-1">
+                                <x-input type="password" name="password" wire:model.defer="password" label="New Password" />
+                            </div>
+                            <div class="flex-1">
+                                <x-input type="password" name="password_confirmation" wire:model.defer="password_confirmation" label="Confirm New Password" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:flex space-y-4 md:space-y-0 md:border-t border-gray-200 border-opacity-50 md:mt-6 pt-6">
                     <div class="md:w-1/3 space-y-1 pb-2 border-b border-gray-200 md:border-0">
                         <div class="text-lg font-semibold">
                             Profile Photo
