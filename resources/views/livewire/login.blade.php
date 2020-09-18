@@ -3,7 +3,7 @@
     <x-form wire:submit.prevent="login">
         <x-card>
             <div class="">
-                <x-input wire:model="email" name="email" label="Email" placeholder="joe@schmo.example.com" />
+                <x-input wire:model="email" name="email" label="Email" placeholder="jerry@example.com" />
             </div>
             <div class="mt-2">
                 <x-input wire:model="password" type="password" name="password" label="Password" placeholder="Password" />

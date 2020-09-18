@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -41,12 +42,19 @@ class Profile extends Component
     {
         $this->validate();
         $this->user->save();
-
-        if ($this->photo) {
-            $this->user->update([
-                'photo' => $this->photo->store('profile-photos/user/'.$this->user->id, 'public'),
-            ]);
-        }
+        $this->photo && $this->user->update([
+            'photo' => $this->photo->store('profile-photos/user/'.$this->user->id, 'public'),
+        ]);
+        $this->photo = null;
+        $this->dispatchBrowserEvent('uploaded');
+        $this->emit('photoUpdated');
         $this->toast('Saved');
+    }
+
+    public function remove()
+    {
+        Storage::disk('public')->delete($this->user->photo);
+        $this->photo = null;
+        $this->user->update(['photo' => null]);
     }
 }

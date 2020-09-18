@@ -12,11 +12,10 @@ This is a work in progress, we are building it on stream:
 
 -   [x] Flash messages / toast notification components with Alpine JS
 -   [x] Build profile component
--   [ ] Paginate habits index page with livewire
+-   [x] Build remove photo feature
+-   [x] Make the photo circle a component of its own so they both update when it changes
 -   [ ] Add change password feature
--   [ ] Build remove photo feature
--   [ ] Only show photo upload form when toggled if photo already exists
--   [ ] Make the photo circle a component of its own so they both update when it changes
+-   [ ] Paginate habits index page with livewire
 
 ## Future Streams (suggestions chat?)
 
