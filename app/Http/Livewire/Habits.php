@@ -13,7 +13,7 @@ class Habits extends Component
     public function render()
     {
         return view('livewire.habits', [
-            'habits' => Habit::all(),
+            'habits' => Habit::paginate(),
         ]);
     }
 }

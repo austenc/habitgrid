@@ -41,5 +41,9 @@
                 </x-card>
             </div>
         @endforeach
+
+        <div class="mt-4">
+            {{ $habits->links() }}
+        </div>
     </div>
 </div>

@@ -15,7 +15,8 @@ This is a work in progress, we are building it on stream:
 -   [x] Build remove photo feature
 -   [x] Make the photo circle a component of its own so they both update when it changes
 -   [x] Add change password feature
--   [ ] Paginate habits index page with livewire
+-   [x] Fixed create form bug
+-   [x] Paginate habits index page with livewire
 
 ## Future Streams (suggestions chat?)
 
