@@ -52,7 +52,12 @@ class Profile extends Component
 
     protected function changePassword()
     {
-        $this->validateOnly('password', ['password' => 'required|min:8|confirmed']);
+        // We only want to validate and update the password if it's not empty
+        if (empty($this->password)) {
+            return;
+        }
+
+        $this->validateOnly('password', ['password' => 'min:8|confirmed']);
         $this->user->update([
             'password' => Hash::make($this->password),
         ]);
@@ -75,5 +80,6 @@ class Profile extends Component
         Storage::disk('public')->delete($this->user->photo);
         $this->photo = null;
         $this->user->update(['photo' => null]);
+        $this->emit('photoUpdated');
     }
 }
