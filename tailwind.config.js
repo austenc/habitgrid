@@ -22,7 +22,7 @@ module.exports = {
         },
         extend: {
             colors: {
-                primary: colors.purple,
+                primary: colors.blue,
             },
             spacing: {
                 '1/2': '50%',

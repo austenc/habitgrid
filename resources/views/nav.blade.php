@@ -3,7 +3,7 @@
         <div class="container h-full">
             <div class="flex h-full items-center">
                 <a href="{{ url('/') }}" class="font-extrabold text-gray-200 text-lg hover:text-white">
-                    Habit Tracker
+                    <x-logo />
                 </a>
     
                 {{-- Menu button --}}

@@ -17,6 +17,7 @@ This is a work in progress, we are building it on stream:
 
 ## Future Feature Ideas
 
+-   [ ] Accent color setting in user profile to change brand colors
 -   [ ] Support multiple stacked toast messages if you smash on a button
 -   [ ] Add notes a given track
 -   [ ] Add support for tracking specific units when completing
