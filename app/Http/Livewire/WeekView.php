@@ -66,13 +66,13 @@ class WeekView extends Component
     {
         return view('livewire.week-view', [
             'daysInWeek' => CarbonPeriod::create($this->endOfWeek->toImmutable()->subDay(4), $this->endOfWeek),
-            'totals' => Track::selectRaw('quantity, DATE(tracked_on) as day')
+            'totals' => Track::selectRaw('amount, DATE(tracked_on) as day')
                 ->when($this->habit, function ($query) {
                     return $query->where('habit_id', $this->habit->id);
                 })
-                ->groupBy('day', 'quantity')
+                ->groupBy('day', 'amount')
                 ->get()
-                ->pluck('quantity', 'day'),
+                ->pluck('amount', 'day'),
         ]);
     }
 }

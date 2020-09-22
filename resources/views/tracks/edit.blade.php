@@ -28,12 +28,15 @@
 
                 @if ($habit->tracks->isEmpty())
                     <button wire:click="addTrack({{ $habit->id }})" type="button" class="px-4 py-2 rounded text-white bg-gray-500 hover:bg-gray-700 transition-all duration-300">
-                        Incomplete
+                        Mark as Complete
                     </button>
                 @else 
-                    <button wire:click="removeTrack({{ $habit->id }})" type="button" class="px-4 py-2 rounded text-white bg-primary-500 hover:bg-primary-700 transition-all duration-300">
-                        Completed
-                    </button>
+                    <div class="text-left flex items-end space-x-2">
+                        <x-input name="amount" :label="ucwords(Str::plural($habit->unit ?? '', $habit->goal))" :placeholder="$habit->goal . ' ' . Str::plural($habit->unit ?? '', $habit->goal)" />
+                        <button wire:click="removeTrack({{ $habit->id }})" type="button" class="h-10 mt-px px-4 py-2 text-sm rounded text-white bg-primary-500 hover:bg-primary-700 transition-all duration-300">
+                            Completed
+                        </button>
+                    </div>
                 @endif
             </div>
         </div>

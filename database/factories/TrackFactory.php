@@ -14,7 +14,7 @@ class TrackFactory extends Factory
     {
         return [
             'habit_id' => Habit::factory(),
-            'quantity' => $this->faker->randomDigitNotNull,
+            'amount' => $this->faker->randomDigitNotNull,
             'tracked_on' => $this->faker->dateTime(),
         ];
     }

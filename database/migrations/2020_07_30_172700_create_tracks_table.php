@@ -16,7 +16,7 @@ class CreateTracksTable extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('habit_id');
-            $table->integer('quantity');
+            $table->integer('amount');
             $table->dateTime('tracked_on');
             $table->text('notes')->nullable();
             $table->timestamps();

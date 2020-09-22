@@ -91,7 +91,7 @@ class DayGrid extends Component
     {
         Track::create([
             'habit_id' => $habitId,
-            'quantity' => 1,
+            'amount' => 1,
             'tracked_on' => $this->selected,
         ]);
 

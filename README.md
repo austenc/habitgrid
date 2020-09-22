@@ -10,15 +10,12 @@ This is a work in progress, we are building it on stream:
 
 ## UP NEXT
 
--   [x] Flash messages / toast notification components with Alpine JS
--   [x] Build profile component
--   [x] Build remove photo feature
--   [x] Make the photo circle a component of its own so they both update when it changes
--   [x] Add change password feature
--   [x] Fixed create form bug
--   [x] Paginate habits index page with livewire
+-   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
+-   [ ] Support tracking units when a habit completed
+-   [ ] Design logo & landing page
+-   [ ] Launch it!
 
-## Future Streams (suggestions chat?)
+## Future Feature Ideas
 
 -   [ ] Support multiple stacked toast messages if you smash on a button
 -   [ ] Add notes a given track
@@ -27,12 +24,18 @@ This is a work in progress, we are building it on stream:
 -   [ ] Add "mini grid" of recent month/weeks on habit index view
 -   [ ] Habit leaderboards
 -   [ ] Group habit tracking (like a team goal tracker)
--   [ ] Building a form component system
 -   [ ] Public habit pages / toggle visibility
 -   [ ] Challenge friends to a habit battle
 
 ## Done
 
+-   [x] Flash messages / toast notification components with Alpine JS
+-   [x] Build profile component
+-   [x] Build remove photo feature
+-   [x] Make the photo circle a component of its own so they both update when it changes
+-   [x] Add change password feature
+-   [x] Fixed create form bug
+-   [x] Paginate habits index page with livewire
 -   [x] Upgrade to Livewire 2.x and Laravel 8.x
 -   [x] Fix performance issue (it was debugbar + tooltip component having many views 😅)
 -   [x] Explore replacing some events with `$wire` / entangle
