@@ -31,8 +31,8 @@
                         Mark as Complete
                     </button>
                 @else 
-                    <div class="text-left flex items-end space-x-2">
-                        <x-input name="amount" :label="ucwords(Str::plural($habit->unit ?? '', $habit->goal))" :placeholder="$habit->goal . ' ' . Str::plural($habit->unit ?? '', $habit->goal)" />
+                    <div class="text-left flex items-end space-x-2" x-data>
+                        <x-input name="amount" :value="$habit->tracks->first()->amount" x-on:input.debounce="$wire.updateAmount({{ $habit->id }}, $event.target.value)" :label="ucwords(Str::plural($habit->unit ?? '', $habit->goal))" :placeholder="$habit->goal . ' ' . Str::plural($habit->unit ?? '', $habit->goal)" />
                         <button wire:click="removeTrack({{ $habit->id }})" type="button" class="h-10 mt-px px-4 py-2 text-sm rounded text-white bg-primary-500 hover:bg-primary-700 transition-all duration-300">
                             Completed
                         </button>

@@ -106,6 +106,15 @@ class DayGrid extends Component
         $this->emit('habitTracked', $habitId);
     }
 
+    public function updateAmount($habitId, $amount)
+    {
+        Track::where('habit_id', $habitId)
+            ->whereDate('tracked_on', $this->selected)
+            ->update(['amount' => empty($amount) ? 0 : $amount]);
+
+        $this->emit('habitTracked', $habitId);
+    }
+
     public function previous()
     {
         if ($this->carbonDay->greaterThan($this->daysFromPastYear()->first())) {

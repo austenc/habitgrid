@@ -7,7 +7,7 @@
             @foreach ($daysInWeek as $day)
                 <x-day-card 
                     wire:click="selectDay('{{ $day }}')" 
-                    :unit="$habit->unit" 
+                    :unit="Str::plural($habit->unit, $totals->get($day->toImmutable()->format('Y-m-d')) ?? 0)" 
                     :selected="$day->toDateTimeString() == $current" 
                     :total="$totals->get($day->toImmutable()->format('Y-m-d')) ?? 0" 
                     :date="$day" 

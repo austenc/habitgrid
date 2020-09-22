@@ -11,7 +11,7 @@ This is a work in progress, we are building it on stream:
 ## UP NEXT
 
 -   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
--   [ ] Support tracking units when a habit completed
+-   [x] Support tracking units when a habit completed
 -   [ ] Design logo & landing page
 -   [ ] Launch it!
 
