@@ -9,9 +9,8 @@ use App\Http\Livewire\Profile;
 use App\Http\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::redirect('/', '/dashboard');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/habits', Habits::class)->name('habits.index');
     Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit');
@@ -19,6 +18,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
+    Route::view('/', 'welcome');
     Route::get('/register', Register::class)->name('register');
     Route::get('/login', Login::class)->name('login');
 });

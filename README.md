@@ -12,7 +12,11 @@ This is a work in progress, we are building it on stream:
 
 -   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
 -   [x] Support tracking units when a habit completed
--   [ ] Design logo & landing page
+-   [x] Design logo & landing page
+-   [ ] Finish hero text contrast / gradient
+-   [ ] Finish footer layout and styling
+-   [ ] Make landing page mobile friendly
+-   [ ]
 -   [ ] Launch it!
 
 ## Future Feature Ideas
