@@ -16,7 +16,6 @@ This is a work in progress, we are building it on stream:
 -   [ ] Finish hero text contrast / gradient
 -   [ ] Finish footer layout and styling
 -   [ ] Make landing page mobile friendly
--   [ ]
 -   [ ] Launch it!
 
 ## Future Feature Ideas
