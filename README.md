@@ -10,14 +10,6 @@ This is a work in progress, we are building it on stream:
 
 ## UP NEXT
 
--   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
--   [x] Support tracking units when a habit completed
--   [x] Design logo & landing page
--   [ ] Finish hero text contrast / gradient
--   [ ] Finish footer layout and styling
--   [ ] Make landing page mobile friendly
--   [ ] Launch it!
-
 ## Future Feature Ideas
 
 -   [ ] Accent color setting in user profile to change brand colors
@@ -33,6 +25,13 @@ This is a work in progress, we are building it on stream:
 
 ## Done
 
+-   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
+-   [x] Support tracking units when a habit completed
+-   [x] Design logo & landing page
+-   [x] Finish hero text contrast / gradient
+-   [x] Finish footer layout and styling
+-   [x] Make landing page mobile friendly
+-   [x] Launch it!
 -   [x] Flash messages / toast notification components with Alpine JS
 -   [x] Build profile component
 -   [x] Build remove photo feature
