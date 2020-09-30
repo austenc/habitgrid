@@ -21,7 +21,7 @@ class Habit extends Model
             }
         });
 
-        static::addGlobalScope('user', function (Builder $builder) {
+        static::addGlobalScope('byUser', function (Builder $builder) {
             $builder->where('user_id', auth()->id());
         });
     }
@@ -34,6 +34,13 @@ class Habit extends Model
     public function tracks()
     {
         return $this->hasMany(Track::class);
+    }
+
+    public function scopeTotalTrackedInPastWeek()
+    {
+        return $this->tracks()
+            ->whereDate('tracked_on', '>=', today()->subWeek())
+            ->count('habit_id');
     }
 
     // Thanks Rel904 <3

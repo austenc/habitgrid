@@ -10,6 +10,9 @@ This is a work in progress, we are building it on stream:
 
 ## UP NEXT
 
+-   [x] Fix user scoping on dashboard
+-   [x] Fix bug where habits are double marked
+
 ## Future Feature Ideas
 
 -   [ ] Accent color setting in user profile to change brand colors
@@ -25,6 +28,7 @@ This is a work in progress, we are building it on stream:
 
 ## Done
 
+-   [x] Fix registration redirect bug
 -   [x] Decide on a name -- Habit Grid it is -- habitgrid.com
 -   [x] Support tracking units when a habit completed
 -   [x] Design logo & landing page

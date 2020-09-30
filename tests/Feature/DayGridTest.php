@@ -122,6 +122,4 @@ class DayGridTest extends TestCase
             ->call('next')
             ->assertSet('selected', today()->toDateTimeString());
     }
-
-    // TODO: write tests to check scoping of habits and tracks
 }

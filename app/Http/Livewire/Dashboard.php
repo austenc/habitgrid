@@ -15,7 +15,7 @@ class Dashboard extends Component
         return view('livewire.dashboard', [
             'totalHabits' => Habit::count(),
             'habitWithBestStreak' => Habit::all()->sortByDesc('currentStreak.length')->first(),
-            'totalHabitsInPastWeek' => Track::totalHabitsInPastWeek(),
+            'totalHabitsInPastWeek' => Habit::totalTrackedInPastWeek(),
         ]);
     }
 }

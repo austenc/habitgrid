@@ -10,7 +10,6 @@ use App\Http\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
-    Route::redirect('/', '/dashboard');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/habits', Habits::class)->name('habits.index');
     Route::get('/habits/{habit}', HabitDetail::class)->name('habits.edit');
