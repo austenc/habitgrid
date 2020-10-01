@@ -15,7 +15,7 @@
             </div>
         </x-card>
         <div class="text-center mt-5">
-            Need account? <a href="{{ route('register') }}" class="text-link font-medium">Sign up here</a>
+            Need an account? <a href="{{ route('register') }}" class="text-link font-medium">Sign up here</a>
         </div>
     </x-form>
 </div>
