@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\Register;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire;
 use Tests\TestCase;
@@ -57,6 +58,14 @@ class RegisterTest extends TestCase
         Livewire::test(Register::class)
             ->call('register')
             ->assertHasErrors(['email' => 'required']);
+    }
+
+    public function test_email_must_be_unique()
+    {
+        $user = User::factory()->create(['email' => 'test@example.com']);
+        $component = Livewire::test(Register::class)
+            ->set('email', 'test@example.com')
+            ->assertHasErrors(['email' => 'unique']);
     }
 
     public function test_email_is_valid_email()

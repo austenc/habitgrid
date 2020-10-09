@@ -8,6 +8,11 @@
             <div class="mt-2">
                 <x-input wire:model="password" type="password" name="password" label="Password" placeholder="Password" />
             </div>
+            <div class="mt-3">
+                <label>
+                    <input type="checkbox" wire:model.defer="remember" class="form-checkbox"> Remember device
+                </label>
+            </div>
             <div class="mt-3 text-right">
                 <button type="submit" class="bg-primary-500 hover:bg-primary-700 rounded px-3 py-2 text-white font-semibold text-sm">
                     Sign In

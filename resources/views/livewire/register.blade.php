@@ -3,16 +3,16 @@
     <x-form wire:submit.prevent="register">
         <x-card>
             <div class="">
-                <x-input wire:model="name" name="name" label="Your Name" placeholder="Joe Schmo" />
+                <x-input wire:model.defer="name" name="name" label="Your Name" placeholder="Joe Schmo" />
             </div>
             <div class="mt-2">
                 <x-input wire:model="email" name="email" label="Email" placeholder="joe@schmo.example.com" />
             </div>
             <div class="mt-2">
-                <x-input wire:model="password" type="password" name="password" label="Password" placeholder="Password" />
+                <x-input wire:model.defer="password" type="password" name="password" label="Password" placeholder="Password" />
             </div>
             <div class="mt-2">
-                <x-input wire:model="password_confirmation" type="password" name="password_confirmation" label="Confirm Password" placeholder="Confirm Password" />
+                <x-input wire:model.defer="password_confirmation" type="password" name="password_confirmation" label="Confirm Password" placeholder="Confirm Password" />
             </div>
             <div class="mt-3 text-right">
                 <button type="submit" class="bg-primary-500 hover:bg-primary-700 rounded px-3 py-2 text-white font-semibold text-sm">

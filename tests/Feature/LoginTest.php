@@ -5,11 +5,14 @@ namespace Tests\Feature;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Logout;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_can_see_login_form()
     {
         $this->get('/login')->assertSeeLivewire('login');
@@ -76,12 +79,34 @@ class LoginTest extends TestCase
     public function test_authenticated_user_can_logout()
     {
         $user = User::factory()->create();
-
         Livewire::actingAs($user)
             ->test(Logout::class)
             ->call('logout')
             ->assertRedirect('/');
 
         $this->assertGuest();
+    }
+
+    public function test_remember_field_exists_in_login_component()
+    {
+        Livewire::test(Login::class)->assertSeeHtml('wire:model.defer="remember"');
+    }
+
+    public function test_user_can_be_remembered()
+    {
+        $user = User::factory()->create(['remember_token' => null]);
+        Livewire::actingAs($user)
+            ->test(Login::class)
+            ->set('email', $user->email)
+            ->set('password', 'password')
+            ->set('remember', true)
+            ->call('login')
+            ->assertHasNoErrors();
+
+        $this->assertAuthenticated();
+        $this->assertDatabaseMissing('users', [
+            'id' => $user->id,
+            'remember_token' => null,
+        ]);
     }
 }
