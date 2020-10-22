@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative" x-data="{ timezone: @entangle('timezone') }" x-init="timezone = Intl.DateTimeFormat().resolvedOptions().timeZone">
     <div wire:loading class="absolute z-10 top-0 left-0 w-full h-full rounded border-red-400 bg-transparent xl:bg-white xl:bg-opacity-75">
         <div class="flex w-full h-full items-center justify-center">
             <div class="bg-black bg-opacity-75 p-4 rounded-lg xl:p-0 xl:bg-transparent">

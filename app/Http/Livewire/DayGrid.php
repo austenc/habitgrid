@@ -11,6 +11,7 @@ use Livewire\Component;
 class DayGrid extends Component
 {
     public $habit;
+    public $timezone;
     public $selected = null;
 
     protected $listeners = ['daySelected'];
@@ -51,8 +52,8 @@ class DayGrid extends Component
                 return $query->where('habit_id', $this->habit->id);
             })
             ->whereBetween('tracked_on', [
-                today()->subYear()->startOfWeek(Carbon::SUNDAY),
-                today(),
+                today($this->timezone)->subYear()->startOfWeek(Carbon::SUNDAY),
+                today($this->timezone),
             ]);
     }
 
@@ -124,7 +125,7 @@ class DayGrid extends Component
 
     public function next()
     {
-        if ($this->carbonDay->lessThan(today())) {
+        if ($this->carbonDay->lessThan(today($this->timezone))) {
             $this->selected = $this->carbonDay->addDay()->toDateTimeString();
         }
     }
@@ -168,9 +169,9 @@ class DayGrid extends Component
     protected function daysFromPastYear($interval = null)
     {
         return CarbonPeriod::create(
-            today()->subYear()->startOfWeek(Carbon::SUNDAY),
+            today($this->timezone)->subYear()->startOfWeek(Carbon::SUNDAY),
             $interval,
-            today()
+            today($this->timezone)
         );
     }
 
